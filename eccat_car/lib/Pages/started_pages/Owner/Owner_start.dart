@@ -4,6 +4,10 @@ import '../../../core/colors.dart';
 import '../../../core/space.dart';
 import '../../AI/car_page.dart';
 import '../../Health Care/darkmode.dart';
+import 'package:eccat_car/Info/AIinfo.dart';
+import 'package:eccat_car/Info/IOTinfo.dart';
+import 'package:eccat_car/Info/Healthinfo.dart';
+import 'package:eccat_car/Info/Securityinfo.dart';
 import '../../Iot/final_design.dart';
 import '../../Security/Detection.dart';
 
@@ -139,7 +143,7 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (builder) => const IoTPage()));
+                                  builder: (builder) => const IOTInfo()));
                         },
                         child: Container(
                           height: screenWidth > 480
@@ -202,7 +206,7 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (builder) => Detection()));
+                                  builder: (builder) => SecurityInfo()));
                         },
                         child: Container(
                           height: screenWidth > 480
@@ -251,7 +255,7 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                               context,
                               MaterialPageRoute(
                                   builder: (builder) =>
-                                      const HealthCareDriver()));
+                                      const HealthInfo()));
                         },
                         child: Container(
                           height: screenWidth > 480
