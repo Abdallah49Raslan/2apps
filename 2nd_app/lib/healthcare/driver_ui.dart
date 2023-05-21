@@ -4,12 +4,6 @@ import 'package:application_1/healthcare/passenger1grid.dart';
 import 'package:application_1/healthcare/passenger2grid.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-// import '../../core/colors.dart';
-// import '../../core/globalvariables.dart';
-// import '../../core/text_style.dart';
-// import 'DriverGrid.dart';
-// import 'Passenger1Grid.dart';
-// import 'Passenger2Grid.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'global_variabs.dart';
@@ -94,31 +88,34 @@ class _darkmodeState extends State<HealthCareDriver> {
             "assets/icons/Car.png",
           )),
         ),
-        child: LayoutBuilder(builder: (context, cons) {
-          return Center(
-            child: Column(
-              children: [
-                GridView(
-                  shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 1,
-                    mainAxisSpacing: 20,
-                    crossAxisSpacing: 10,
-                    childAspectRatio: childAspectvalue,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: LayoutBuilder(builder: (context, cons) {
+            return Center(
+              child: Column(
+                children: [
+                  GridView(
+                    shrinkWrap: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 1,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 10,
+                      childAspectRatio: childAspectvalue,
+                    ),
+                    children: [
+                      //Driver Screen
+                      drivergrid(),
+                      //Passenger1 Screen
+                      passenger1grid(),
+                      //Passenger2 Screen
+                      passenger2grid()
+                    ],
                   ),
-                  children: [
-                    //Driver Screen
-                    drivergrid(),
-                    //Passenger1 Screen
-                    passenger1grid(),
-                    //Passenger2 Screen
-                    passenger2grid()
-                  ],
-                ),
-              ],
-            ),
-          );
-        }),
+                ],
+              ),
+            );
+          }),
+        ),
       ),
     );
   }

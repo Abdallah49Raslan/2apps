@@ -105,6 +105,8 @@ flutter:
     - assets\icons\oxi3.png
     - assets\icons\Car.png
     - assets\icons\alcohol.png
+    - assets\Emergency.MP3
+    - assets\Security.MP3
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
