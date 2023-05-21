@@ -61,7 +61,7 @@ class _CustomerStartPageState extends State<CustomerStartPage> {
 
               //car icon in above of page
               Image.asset(
-                'assets/image/App_logo.png',
+                'assets/images/App_logo.png',
                 height: MediaQuery.of(context).size.height / 2 - 100,
                 width: double.infinity,
               ),

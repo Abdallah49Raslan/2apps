@@ -142,7 +142,7 @@ class _FaceRecoState extends State<FaceReco> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
-                          color: Colors.blue,
+                        color: urlPic == null ? Colors.red : Colors.blue,
                           width: 4,
                         ),
                       ),
