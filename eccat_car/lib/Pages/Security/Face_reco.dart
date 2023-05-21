@@ -67,7 +67,7 @@ class _FaceRecoState extends State<FaceReco> {
             AwesomeNotifications().createNotification(
               content: NotificationContent(
                 id: 30,
-                channelKey: "health",
+                channelKey: "schedule",
                 title: "Warning Finger Print",
                 body: "Driver is unauthorized",
                 bigPicture:
@@ -87,7 +87,7 @@ class _FaceRecoState extends State<FaceReco> {
             AwesomeNotifications().createNotification(
               content: NotificationContent(
                 id: 30,
-                channelKey: "health",
+                channelKey: "schedule",
                 title: "Warning",
                 body: "Driver is unauthorized",
                 bigPicture:
@@ -215,10 +215,10 @@ class _FaceRecoState extends State<FaceReco> {
                       },
                       child: Text(
                         'Detection',
-                        style: headline2,
+                        style: headline2.copyWith(fontSize: 25),
                       ),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.red, // Set background color to red
+                        primary: urlPic == null ? Colors.red : Colors.blue,
                       ),
                     ),
                   ),
