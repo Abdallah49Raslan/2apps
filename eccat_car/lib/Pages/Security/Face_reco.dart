@@ -62,6 +62,24 @@ class _FaceRecoState extends State<FaceReco> {
               welcomeName = '$welcomeFlagValue';
               finger = '$fingerprint';
             });
+          } else {
+            SecuritySound();
+            AwesomeNotifications().createNotification(
+              content: NotificationContent(
+                id: 30,
+                channelKey: "health",
+                title: "Warning Finger Print",
+                body: "Driver is unauthorized",
+                bigPicture:
+                    "asset://assets/icons/Attention-sign-icon.png", // warning icon
+                notificationLayout: NotificationLayout.BigPicture,
+                largeIcon: "asset://assets/icons/Attention-sign-icon.png",
+                wakeUpScreen: true,
+                locked: true,
+                displayOnBackground: true,
+                actionType: ActionType.Default,
+              ),
+            );
           }
 
           if (unwelcomeFlag != null && unwelcomeFlag!.isNotEmpty) {
@@ -142,7 +160,7 @@ class _FaceRecoState extends State<FaceReco> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
-                        color: urlPic == null ? Colors.red : Colors.blue,
+                          color: urlPic == null ? Colors.red : Colors.blue,
                           width: 4,
                         ),
                       ),

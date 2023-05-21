@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:just_audio/just_audio.dart';
 import '../../core/colors.dart';
 import '../../core/text_style.dart';
 import 'Captures.dart';
@@ -16,13 +18,12 @@ class FaceReco extends StatefulWidget {
 class _FaceRecoState extends State<FaceReco> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final database = FirebaseDatabase.instance.reference();
-  late StreamSubscription outputstream;
   late StreamSubscription outputstream1;
-  String? Driver_name;
+  String? driverName;
   String? urlPic;
-  String? Ages;
-  String? welcomName;
-  String? unwelcomflag;
+  String? age;
+  String? welcomeName;
+  String? unwelcomeFlag;
   String? finger;
 
   @override
@@ -31,11 +32,17 @@ class _FaceRecoState extends State<FaceReco> {
     activateListeners();
   }
 
+  void playSampleSound() async {
+    AudioPlayer player = AudioPlayer();
+    await player.setAsset('assets/Security.MP3');
+    player.play();
+  }
+
   void activateListeners() {
     outputstream1 = database.child('Security').onValue.listen((event) {
       final String? welcomeFlagValue =
           event.snapshot.child('welcomeflag').value as String?;
-      unwelcomflag = event.snapshot.child('unwelcomeflag').value as String?;
+      unwelcomeFlag = event.snapshot.child('unwelcomeflag').value as String?;
       final String? fingerprint =
           event.snapshot.child('fingerprint').value as String?;
 
@@ -48,24 +55,75 @@ class _FaceRecoState extends State<FaceReco> {
 
           if (fingerprint == name) {
             setState(() {
-              Driver_name = '$name';
-              Ages = '$driverAge';
+              driverName = '$name';
+              age = '$driverAge';
               urlPic = '$profileUrl';
-              welcomName = '$welcomeFlagValue';
+              welcomeName = '$welcomeFlagValue';
               finger = '$fingerprint';
             });
-          } else if (unwelcomflag != null && unwelcomflag!.isNotEmpty) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => Detection(
-                        intialvalue: unwelcomflag,
-                      )),
+          } else {
+            SecuritySound();
+            AwesomeNotifications().createNotification(
+              content: NotificationContent(
+                id: 30,
+                channelKey: "health",
+                title: "Warning Finger Print",
+                body: "Driver is unauthorized",
+                bigPicture:
+                    "asset://assets/icons/Attention-sign-icon.png", // warning icon
+                notificationLayout: NotificationLayout.BigPicture,
+                largeIcon: "asset://assets/icons/Attention-sign-icon.png",
+                wakeUpScreen: true,
+                locked: true,
+                displayOnBackground: true,
+                actionType: ActionType.Default,
+              ),
+            );
+          }
+
+          if (unwelcomeFlag != null && unwelcomeFlag!.isNotEmpty) {
+            SecuritySound();
+            AwesomeNotifications().createNotification(
+              content: NotificationContent(
+                id: 30,
+                channelKey: "health",
+                title: "Warning Camera Detect",
+                body: "Unauthorized Person in the car",
+                bigPicture:
+                    "asset://assets/icons/Attention-sign-icon.png", // warning icon
+                notificationLayout: NotificationLayout.BigPicture,
+                largeIcon: "asset://assets/icons/Attention-sign-icon.png",
+                wakeUpScreen: true,
+                locked: true,
+                displayOnBackground: true,
+                actionType: ActionType.Default,
+              ),
+            );
+          }
+          if (welcomeFlagValue != null && welcomeFlagValue.isNotEmpty) {
+            AwesomeNotifications().createNotification(
+              content: NotificationContent(
+                id: 30,
+                channelKey: "health",
+                title: "Welcome",
+                body: "$welcomeName",
+                notificationLayout: NotificationLayout.BigPicture,
+                wakeUpScreen: true,
+                locked: true,
+                displayOnBackground: true,
+                actionType: ActionType.Default,
+              ),
             );
           }
         });
       });
     });
+  }
+
+  @override
+  void dispose() {
+    outputstream1.cancel();
+    super.dispose();
   }
 
   @override
@@ -101,7 +159,7 @@ class _FaceRecoState extends State<FaceReco> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
-                          color: Colors.blue,
+                          color: urlPic == null ? Colors.red : Colors.blue,
                           width: 4,
                         ),
                       ),
@@ -115,7 +173,12 @@ class _FaceRecoState extends State<FaceReco> {
                                 urlPic!,
                                 fit: BoxFit.cover,
                               ),
-                            if (urlPic == null) Icon(Icons.person, size: 60),
+                            if (urlPic == null)
+                              Icon(
+                                Icons.warning,
+                                size: 60,
+                                color: redColor,
+                              ),
                           ],
                         ),
                       ),
@@ -134,7 +197,7 @@ class _FaceRecoState extends State<FaceReco> {
                     child: Column(
                       children: [
                         Text(
-                          'The Latest Driver is: $Driver_name \n               Age: $Ages',
+                          'The Latest Driver is: $driverName\nAge: $age',
                           style: Security,
                         ),
                       ],
@@ -192,5 +255,11 @@ class _FaceRecoState extends State<FaceReco> {
         ],
       ),
     );
+  }
+
+  void SecuritySound() {
+    if (unwelcomeFlag != null && unwelcomeFlag!.isNotEmpty) {
+      playSampleSound();
+    }
   }
 }
