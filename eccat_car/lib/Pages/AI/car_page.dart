@@ -10,7 +10,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/instance_manager.dart';
-
 import '../../core/colors.dart';
 import '../../core/text_style.dart';
 import '../started_pages/Driver/entry_Driver.dart';
@@ -52,18 +51,14 @@ class _Car_pageState extends State<Car_page> {
                   itemBuilder: (BuildContext context, DataSnapshot snapshot,
                       Animation<double> animation, int index) {
                     if (snapshot.child('action1').value == '222') {
-                      // _controller.sendNotification();
+                      _controller.sendNotification();
                     }
 
                     return Builder(builder: (context) {
                       Timer(Duration(seconds: 7), () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const EntryDriver(
-                                    initialIndex: 0,
-                                  )),
-                        );
+                        Get.offAll(EntryDriver(
+                          initialIndex: 0,
+                        ));
                       });
                       return Padding(
                         padding: EdgeInsets.all(5),
@@ -185,7 +180,7 @@ class _Car_pageState extends State<Car_page> {
                   itemBuilder: (BuildContext context, DataSnapshot snapshot,
                       Animation<double> animation, int index) {
                     if (snapshot.child('LeftAction').value == '444') {
-                      // _controller.rightNotification();
+                      _controller.rightNotification();
                     }
 
                     return Builder(builder: (context) {
@@ -201,13 +196,9 @@ class _Car_pageState extends State<Car_page> {
                       // )..show();
 
                       Timer(Duration(seconds: 7), () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const EntryDriver(
-                                    initialIndex: 0,
-                                  )),
-                        );
+                        Get.offAll(EntryDriver(
+                          initialIndex: 0,
+                        ));
                       });
                       return Container(
                         alignment: Alignment.topRight,
@@ -252,7 +243,7 @@ class _Car_pageState extends State<Car_page> {
                   itemBuilder: (BuildContext context, DataSnapshot snapshot,
                       Animation<double> animation, int index) {
                     if (snapshot.child('RightAction').value == '333') {
-                      // _controller.setNotification();
+                      _controller.setNotification();
                     }
 
                     return Builder(builder: (context) {
@@ -268,13 +259,9 @@ class _Car_pageState extends State<Car_page> {
                       // )..show();
 
                       Timer(Duration(seconds: 7), () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const EntryDriver(
-                                    initialIndex: 0,
-                                  )),
-                        );
+                        Get.offAll(EntryDriver(
+                          initialIndex: 0,
+                        ));
                       });
                       return Container(
                         alignment: Alignment.topLeft,
@@ -326,6 +313,7 @@ class _Car_pageState extends State<Car_page> {
                           'assets/icons/Car.svg',
                           height: 500.h,
                           width: double.infinity,
+                          color: Color.fromARGB(255, 5, 214, 193),
                         ),
                       )),
                 ),
@@ -370,7 +358,7 @@ class _Car_pageState extends State<Car_page> {
 
                 // Right Lane up
                 Positioned(
-                    left: MediaQuery.of(context).size.width / 1.8,
+                    left: MediaQuery.of(context).size.width / 1.6,
                     top: MediaQuery.of(context).size.height / 35,
                     height: 250.h,
                     width: 200.h,
@@ -378,14 +366,14 @@ class _Car_pageState extends State<Car_page> {
                       padding: EdgeInsets.all(8),
                       child: SvgPicture.asset(
                         'assets/icons/verticalline.svg',
-                        color: rightside ? Colors.red : Colors.white54,
+                        color: rightside ? Colors.red : Colors.white,
                         height: 500.h,
                         width: double.infinity,
                       ),
                     )),
                 // Right Lane down
                 Positioned(
-                    left: MediaQuery.of(context).size.width / 1.8,
+                    left: MediaQuery.of(context).size.width / 1.6,
                     top: MediaQuery.of(context).size.height / 4.5,
                     height: 500.h,
                     width: 200.h,
@@ -402,7 +390,7 @@ class _Car_pageState extends State<Car_page> {
                 // Left Lane up
 
                 Positioned(
-                    right: MediaQuery.of(context).size.width / 1.8,
+                    right: MediaQuery.of(context).size.width / 1.6,
                     top: MediaQuery.of(context).size.height / 35,
                     height: 250.h,
                     width: 200.h,
@@ -410,7 +398,7 @@ class _Car_pageState extends State<Car_page> {
                       padding: EdgeInsets.all(8),
                       child: SvgPicture.asset(
                         'assets/icons/verticalline.svg',
-                        color: leftside ? Colors.red : Colors.white54,
+                        color: leftside ? Colors.red : Colors.white,
                         height: 500.h,
                         width: double.infinity,
                       ),
@@ -418,7 +406,7 @@ class _Car_pageState extends State<Car_page> {
 
                 // Left Lane down
                 Positioned(
-                    right: MediaQuery.of(context).size.width / 1.8,
+                    right: MediaQuery.of(context).size.width / 1.6,
                     top: MediaQuery.of(context).size.height / 4.5,
                     height: 500.h,
                     width: 200.h,
@@ -431,68 +419,48 @@ class _Car_pageState extends State<Car_page> {
                         width: double.infinity,
                       ),
                     )),
-                Center(
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              setState(() {
-                                leftside = !leftside;
-                                _controller.setNotification();
-                                Timer(Duration(seconds: 7), () {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const EntryDriver(
-                                              initialIndex: 0,
-                                            )),
-                                  );
-                                  // Get.offAll(EntryDriver(initialIndex: 2,));
-                                });
-                                //                 // Timer(Duration(seconds: 5), () {});
-                              });
-                            },
-                            child: Icon(
-                              Icons.warning,
-                              // color: Color(0xFFFF5368),
-                            ),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              _controller.sendNotification();
-                              setState(() {
-                                rightside = !rightside;
-                                Timer(Duration(seconds: 7), () {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const EntryDriver(
-                                              initialIndex: 0,
-                                            )),
-                                  );
-                                });
-                              });
-                            },
-                            child: Text('Ai'),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              _controller.rightNotification();
-
-                              setState(() {
-                                rightside = !rightside;
-                              });
-                            },
-                            child: Text('Right'),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                )
+                // Center(
+                //   child: Column(
+                //     children: [
+                //       Row(
+                //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //         children: [
+                //           ElevatedButton(
+                //             onPressed: () {
+                //               setState(() {
+                //                 leftside = !leftside;
+                //                 _controller.setNotification();
+                //                 // Timer(Duration(seconds: 5), () {});
+                //               });
+                //             },
+                //             child: Icon(
+                //               Icons.warning,
+                //               // color: Color(0xFFFF5368),
+                //             ),
+                //           ),
+                //           ElevatedButton(
+                //             onPressed: () {
+                //               _controller.sendNotification();
+                //               setState(() {
+                //                 rightside = !rightside;
+                //               });
+                //             },
+                //             child: Text('Ai'),
+                //           ),
+                //           ElevatedButton(
+                //             onPressed: () {
+                //               _controller.rightNotification();
+                //               setState(() {
+                //                 rightside = !rightside;
+                //               });
+                //             },
+                //             child: Text('Right'),
+                //           ),
+                //         ],
+                //       )
+                //     ],
+                //   ),
+                // )
               ],
             );
           },

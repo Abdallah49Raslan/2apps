@@ -24,8 +24,6 @@ class _FingerprintPageState extends State<Detection> {
   late StreamSubscription outputstream;
   String? unAuth;
   String? urlPic;
-  bool lockOpen = true;
-  Color lockIconColor = Colors.blue;
 
   void initState() {
     super.initState();
@@ -43,7 +41,6 @@ class _FingerprintPageState extends State<Detection> {
 
       setState(() {
         unAuth = '$unWelcome';
-        lockOpen = (fingerprint != 'stop');
       });
     });
   }
@@ -136,7 +133,7 @@ class _FingerprintPageState extends State<Detection> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => EntryOwner(
-                      initialIndex: 2,
+                      initialIndex: 0,
                     ),
                   ),
                 );
@@ -151,34 +148,6 @@ class _FingerprintPageState extends State<Detection> {
             ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          if (lockOpen) {
-            // Lock open button is pressed
-            database.child('Security').update({
-              'fingerprint': 'stop',
-            });
-            setState(() {
-              lockOpen = false;
-              lockIconColor = Colors.red;
-            });
-          } else {
-            // Lock button is pressed
-            database.child('Security').update({
-              'fingerprint': 'start',
-            });
-            setState(() {
-              lockOpen = true;
-              lockIconColor = Colors.blue;
-            });
-          }
-        },
-        child: Icon(
-          lockOpen ? Icons.lock_open : Icons.lock,
-          size: 40,
-        ),
-        backgroundColor: lockIconColor,
       ),
     );
   }
