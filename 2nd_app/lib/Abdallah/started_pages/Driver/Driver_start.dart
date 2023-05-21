@@ -9,6 +9,10 @@ import '../../../healthcare/driver_ui.dart';
 import '../../../page/car_page.dart';
 import '../../Authintication/login_page.dart';
 import '../../widget/main_button.dart';
+import 'package:application_1/Info/AIinfo.dart';
+import 'package:application_1/Info/Healthinfo.dart';
+import 'package:application_1/Info/Securityinfo.dart';
+import 'package:application_1/Info/IOTinfo.dart';
 
 class DriverStartPage extends StatefulWidget {
   const DriverStartPage({super.key});
@@ -59,7 +63,7 @@ class _DriverStartPageState extends State<DriverStartPage> {
 
               //car icon in above of page
               Image.asset(
-                'assets/images/App_logo.png',
+                'assets/image/App_logo.png',
                 height: MediaQuery.of(context).size.height / 2 - 100,
                 width: double.infinity,
               ),
@@ -132,7 +136,7 @@ class _DriverStartPageState extends State<DriverStartPage> {
                         ),
                       ),
 
-                      const SizedBox(
+                      SizedBox(
                         width: 4,
                       ),
 
@@ -142,7 +146,7 @@ class _DriverStartPageState extends State<DriverStartPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (builder) => const IoTPage()));
+                                  builder: (builder) => const IOTInfo()));
                         },
                         child: Container(
                           height: screenWidth > 480
@@ -171,7 +175,7 @@ class _DriverStartPageState extends State<DriverStartPage> {
                                   child: Container(
                                 //margin: EdgeInsets.only(top: 20),
                                 child: const Text(
-                                  'IoT',
+                                  'IOT',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 25,
@@ -187,7 +191,7 @@ class _DriverStartPageState extends State<DriverStartPage> {
                 }),
               ),
 
-              const SizedBox(
+              SizedBox(
                 height: 3,
               ),
 
@@ -205,7 +209,7 @@ class _DriverStartPageState extends State<DriverStartPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (builder) => const Car_page()));
+                                  builder: (builder) => const AiInfo()));
                         },
                         child: Container(
                           height: screenWidth > 480
@@ -243,7 +247,7 @@ class _DriverStartPageState extends State<DriverStartPage> {
                         ),
                       ),
 
-                      const SizedBox(
+                      SizedBox(
                         width: 4,
                       ),
 
@@ -253,8 +257,7 @@ class _DriverStartPageState extends State<DriverStartPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (builder) =>
-                                      const HealthCareDriver()));
+                                  builder: (builder) => const HealthInfo()));
                         },
                         child: Container(
                           height: screenWidth > 480
@@ -283,7 +286,7 @@ class _DriverStartPageState extends State<DriverStartPage> {
                                   child: Container(
                                 //margin: EdgeInsets.only(top: 20),
                                 child: const Text(
-                                  'Health Care',
+                                  'HealthCare',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 25,
@@ -293,7 +296,7 @@ class _DriverStartPageState extends State<DriverStartPage> {
                             ],
                           ),
                         ),
-                      ),
+                      )
                     ],
                   );
                 }),

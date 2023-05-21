@@ -8,6 +8,10 @@ import '../../../healthcare/driver_ui.dart';
 import '../../Authintication/login_page.dart';
 import '../../Security/Detection.dart';
 import '../../widget/main_button.dart';
+import 'package:application_1/Info/AIinfo.dart';
+import 'package:application_1/Info/Healthinfo.dart';
+import 'package:application_1/Info/Securityinfo.dart';
+import 'package:application_1/Info/IOTinfo.dart';
 
 class OwnerStartPage extends StatefulWidget {
   const OwnerStartPage({super.key});
@@ -18,7 +22,7 @@ class OwnerStartPage extends StatefulWidget {
 
 class _OwnerStartPageState extends State<OwnerStartPage> {
   int index = 0;
-  double fontSize = 20; // Initial font size
+  double fontSize = 25; // Initial font size
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +62,12 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
 
               //car icon in above of page
               Image.asset(
-                'assets/images/App_logo.png',
+                'assets/image/App_logo.png',
                 height: MediaQuery.of(context).size.height / 2 - 100,
                 width: double.infinity,
               ),
 
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 10,
                   vertical: 12,
@@ -72,7 +76,7 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                   'specifications',
                   style: TextStyle(
                       color: redhomeColor,
-                      fontSize: 30,
+                      fontSize: screenWidth > 480 ? 34 : 30,
                       fontWeight: FontWeight.w900),
                 ),
               ),
@@ -118,11 +122,11 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                               const SpaceVH(height: 10.0),
                               Expanded(
                                   child: Container(
-                                child: const Text(
+                                child: Text(
                                   'Location',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 25,
+                                      fontSize: screenWidth > 480 ? 25 : 22,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ))
@@ -132,7 +136,7 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                       ),
 
                       SizedBox(
-                        width: 8,
+                        width: 4,
                       ),
 
                       //Iot
@@ -141,7 +145,7 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (builder) => const IoTPage()));
+                                  builder: (builder) => const IOTInfo()));
                         },
                         child: Container(
                           height: screenWidth > 480
@@ -169,11 +173,11 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                               Expanded(
                                   child: Container(
                                 //margin: EdgeInsets.only(top: 20),
-                                child: const Text(
+                                child: Text(
                                   'IoT',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 25,
+                                      fontSize: screenWidth > 480 ? 25 : 22,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ))
@@ -187,7 +191,7 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
               ),
 
               SizedBox(
-                height: 10,
+                height: 3,
               ),
 
               //2w
@@ -204,7 +208,7 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (builder) => Detection()));
+                                  builder: (builder) => SecurityInfo()));
                         },
                         child: Container(
                           height: screenWidth > 480
@@ -229,11 +233,11 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                               const SpaceVH(height: 10.0),
                               Expanded(
                                   child: Container(
-                                child: const Text(
+                                child: Text(
                                   'Security',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 25,
+                                      fontSize: screenWidth > 480 ? 25 : 22,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ))
@@ -243,7 +247,7 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                       ),
 
                       SizedBox(
-                        width: 8,
+                        width: 4,
                       ),
 
                       //Health
@@ -252,8 +256,7 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (builder) =>
-                                      const HealthCareDriver()));
+                                  builder: (builder) => const HealthInfo()));
                         },
                         child: Container(
                           height: screenWidth > 480
@@ -281,11 +284,11 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                               Expanded(
                                 child: Container(
                                   //margin: EdgeInsets.only(top: 20),
-                                  child: const Text(
-                                    'Health Care',
+                                  child: Text(
+                                    'Healthcare',
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 25,
+                                        fontSize: screenWidth > 480 ? 25 : 22,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
@@ -293,14 +296,14 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                             ],
                           ),
                         ),
-                      ),
+                      )
                     ],
                   );
                 }),
               ),
-              const SizedBox(
-                height: 50,
-              )
+              SizedBox(
+                height: 30,
+              ),
             ],
           ),
         ),

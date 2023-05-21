@@ -7,6 +7,10 @@ import '../../../core/colors.dart';
 import '../../../core/space.dart';
 import '../../../healthcare/passenger1_ui.dart';
 import '../../widget/main_button.dart';
+import 'package:application_1/Info/AIinfo.dart';
+import 'package:application_1/Info/Healthinfo.dart';
+import 'package:application_1/Info/Securityinfo.dart';
+import 'package:application_1/Info/IOTinfo.dart';
 
 class CustomerStartPage extends StatefulWidget {
   const CustomerStartPage({super.key});
@@ -57,7 +61,7 @@ class _CustomerStartPageState extends State<CustomerStartPage> {
 
               //car icon in above of page
               Image.asset(
-                'assets/images/App_logo.png',
+                'assets/image/App_logo.png',
                 height: MediaQuery.of(context).size.height / 2 - 100,
                 width: double.infinity,
               ),
@@ -140,7 +144,7 @@ class _CustomerStartPageState extends State<CustomerStartPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (builder) => const passenger1_ui()));
+                                  builder: (builder) => const HealthInfo()));
                         },
                         child: Container(
                           height: screenWidth > 480
@@ -169,7 +173,7 @@ class _CustomerStartPageState extends State<CustomerStartPage> {
                                   child: Container(
                                 //margin: EdgeInsets.only(top: 20),
                                 child: const Text(
-                                  'Health Care',
+                                  'Health',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 25,
@@ -179,7 +183,7 @@ class _CustomerStartPageState extends State<CustomerStartPage> {
                             ],
                           ),
                         ),
-                      ),
+                      )
                     ],
                   );
                 }),
