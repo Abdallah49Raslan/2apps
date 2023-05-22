@@ -13,6 +13,7 @@ class AuthPage extends StatefulWidget {
   @override
   _AuthPageState createState() => _AuthPageState();
 }
+
 class _AuthPageState extends State<AuthPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -41,14 +42,20 @@ class _AuthPageState extends State<AuthPage> {
           Future.delayed(Duration.zero, () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const EntryOwner(initialIndex: 2,)),
+              MaterialPageRoute(
+                  builder: (context) => const EntryOwner(
+                        initialIndex: 2,
+                      )),
             );
           });
         } else if (userRole == 'Driver') {
           Future.delayed(Duration.zero, () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const EntryDriver(initialIndex: 2,)),
+              MaterialPageRoute(
+                  builder: (context) => const EntryDriver(
+                        initialIndex: 2,
+                      )),
             );
           });
           print('3');
@@ -56,7 +63,10 @@ class _AuthPageState extends State<AuthPage> {
           Future.delayed(Duration.zero, () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const EntryCustomer(initialIndex: 2,)),
+              MaterialPageRoute(
+                  builder: (context) => const EntryCustomer(
+                        initialIndex: 1,
+                      )),
             );
           });
         } else {

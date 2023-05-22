@@ -12,7 +12,7 @@ import '../../../core/rive_utils.dart';
 import '../../../functions/alertexitapp.dart';
 import '../../AI/search_page.dart';
 import '../../Health Care/darkmode.dart';
-import '../../Security/Face_reco.dart';
+import '../../Security/Face_recoo.dart';
 import '../../home/components/side_menu.dart';
 import '../../home/models/menu_btn.dart';
 

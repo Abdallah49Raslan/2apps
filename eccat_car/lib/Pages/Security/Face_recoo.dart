@@ -7,7 +7,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
-
 import '../../core/text_style.dart';
 import 'Detection.dart';
 
@@ -33,9 +32,9 @@ class _FaceRecoState extends State<FaceReco> {
     activateListeners();
   }
 
-  void playSampleSound() async {
+  void playSecuritySound() async {
     AudioPlayer player = AudioPlayer();
-    await player.setAsset('assets/bump.mp3');
+    await player.setAsset('assets/Security.MP3');
     player.play();
   }
 
@@ -86,7 +85,7 @@ class _FaceRecoState extends State<FaceReco> {
             SecuritySound();
             AwesomeNotifications().createNotification(
               content: NotificationContent(
-                id: 30,
+                id: 31,
                 channelKey: "schedule",
                 title: "Warning",
                 body: "Driver is unauthorized",
@@ -104,8 +103,8 @@ class _FaceRecoState extends State<FaceReco> {
           if (welcomeFlagValue != null && welcomeFlagValue.isNotEmpty) {
             AwesomeNotifications().createNotification(
               content: NotificationContent(
-                id: 30,
-                channelKey: "health",
+                id: 32,
+                channelKey: "schedule",
                 title: "Welcome",
                 body: "$welcomeName",
                 notificationLayout: NotificationLayout.BigPicture,
@@ -260,7 +259,7 @@ class _FaceRecoState extends State<FaceReco> {
 
   void SecuritySound() {
     if (unwelcomeFlag != null && unwelcomeFlag!.isNotEmpty) {
-      playSampleSound();
+      playSecuritySound();
     }
   }
 }
