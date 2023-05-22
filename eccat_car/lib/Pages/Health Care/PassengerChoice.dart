@@ -15,6 +15,14 @@ class _PassengerChoiceState extends State<PassengerChoice> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    double seatfontsize = 20;
+    double widthdivision = 3;
+    double heightdivision = 15;
+    if (screenWidth > 480) {
+      seatfontsize = 30;
+      widthdivision = 5;
+      heightdivision = 20;
+    }
     return Scaffold(
         backgroundColor: Colors.black,
         body: Container(
@@ -38,8 +46,8 @@ class _PassengerChoiceState extends State<PassengerChoice> {
                           height: (screenHeight / 3),
                         ),
                         Container(
-                          height: screenHeight / 20,
-                          width: screenWidth / 5,
+                          height: screenHeight / heightdivision,
+                          width: screenWidth / widthdivision,
                           child: ElevatedButton(
                             style: ButtonStyle(
                               backgroundColor:
@@ -61,8 +69,8 @@ class _PassengerChoiceState extends State<PassengerChoice> {
                             },
                             child: Text(
                               "Seat 1",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 30),
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: seatfontsize),
                             ),
                           ),
                         ),
@@ -70,8 +78,8 @@ class _PassengerChoiceState extends State<PassengerChoice> {
                           height: 70,
                         ),
                         Container(
-                          height: screenHeight / 20,
-                          width: screenWidth / 5,
+                          height: screenHeight / heightdivision,
+                          width: screenWidth / widthdivision,
                           child: ElevatedButton(
                             style: ButtonStyle(
                               backgroundColor:
@@ -93,8 +101,8 @@ class _PassengerChoiceState extends State<PassengerChoice> {
                             },
                             child: Text(
                               "Seat 2",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 30),
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: seatfontsize),
                             ),
                           ),
                         ),
