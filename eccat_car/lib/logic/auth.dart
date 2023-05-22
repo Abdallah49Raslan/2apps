@@ -5,7 +5,6 @@ import '../Pages/started_pages/Customer/entry_customer.dart';
 import '../Pages/started_pages/Driver/entry_Driver.dart';
 import '../Pages/started_pages/Owner/entry_Owner.dart';
 import '../onboding_screen.dart';
-import 'LogInLogic.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -34,7 +33,7 @@ class _AuthPageState extends State<AuthPage> {
               .doc(user.uid)
               .get();
       print('1');
-      if (documentSnapshot != null && documentSnapshot.exists) {
+      if (documentSnapshot.exists) {
         userRole = documentSnapshot.data()!['user'];
         print('2');
         // Navigate to the appropriate start page based on user's role

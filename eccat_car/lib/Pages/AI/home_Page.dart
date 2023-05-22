@@ -1,11 +1,8 @@
 import 'dart:async';
-
 import 'package:eccat_car/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 
 // import '../constants.dart';
 
@@ -363,8 +360,6 @@ class _FireThreeState extends State<FireThree> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
     final TestButtonREf = database.child("TestNow");
     return Scaffold(
         // backgroundColor: Colors.black,

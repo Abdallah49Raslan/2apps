@@ -10,7 +10,6 @@ import '../../../core/rive_utils.dart';
 import '../../../functions/alertexitapp.dart';
 import '../../../lists/search.dart';
 import '../../AI/car_page.dart';
-import '../../AI/search_page.dart';
 import '../../Health Care/darkmode.dart';
 import '../../home/components/side_menu.dart';
 import '../../home/models/menu_btn.dart';

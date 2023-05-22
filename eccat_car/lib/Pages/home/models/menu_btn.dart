@@ -15,10 +15,8 @@ class MenuBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    double btnSize = 40.0;
 
     if (screenWidth > 480) {
-      btnSize = 80.0;
     }
 
     return SafeArea(

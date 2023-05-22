@@ -19,10 +19,8 @@ class AnimatedBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    double containerWidth = 288.0;
 
     if (screenWidth > 480) {
-      containerWidth = screenWidth / 2;
     }
     return GestureDetector(
       onTap: press,

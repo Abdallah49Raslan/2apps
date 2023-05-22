@@ -9,7 +9,6 @@ import '../onboding_screen.dart';
 class LoginLogic extends StatelessWidget {
   final String? email;
   final String? password;
-  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   LoginLogic({
     Key? key,
@@ -58,6 +57,7 @@ class LoginLogic extends StatelessWidget {
         return false;
       }
 
+      // ignore: unnecessary_null_comparison
       if (userCredential != null) {
         // Check user's role in Cloud Firestore
         String? user; // Declare the role variable before using it

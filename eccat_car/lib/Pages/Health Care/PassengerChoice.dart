@@ -1,4 +1,3 @@
-import 'package:eccat_car/core/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:eccat_car/Pages/Health Care/Passenger1.dart';
 import 'package:eccat_car/Pages/Health Care/Passenger2.dart';

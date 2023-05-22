@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:eccat_car/Pages/started_pages/Owner/entry_Owner.dart';
 import 'package:eccat_car/core/colors.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import '../../../core/text_style.dart';
+import '../../started_pages/Customer/entry_customer.dart';
 
 class UserDetect extends StatefulWidget {
   final String? intialvalue;
@@ -120,8 +120,8 @@ class _FingerprintPageState extends State<UserDetect> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => EntryOwner(
-                            initialIndex: 2,
+                      builder: (context) => EntryCustomer(
+                            initialIndex: 1,
                           )),
                 );
               },

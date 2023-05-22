@@ -1,13 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-import '../../core/colors.dart';
 import '../../core/globalvariables.dart';
-import '../../core/text_style.dart';
 import 'DriverGrid.dart';
 import 'Passenger1Grid.dart';
 import 'Passenger2Grid.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HealthCareDriver extends StatefulWidget {
   const HealthCareDriver({super.key});
@@ -69,7 +66,6 @@ class _darkmodeState extends State<HealthCareDriver> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    int index = 1;
 
     double childAspectvalue = 2;
     if (screenWidth > 480) {

@@ -1,12 +1,10 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:eccat_car/Pages/Security/Captures.dart';
 import 'package:eccat_car/Pages/Security/user/user_detect.dart';
 import 'package:eccat_car/core/colors.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import '../../../core/text_style.dart';
-import '../Detection.dart';
 
 class UserCheck extends StatefulWidget {
   @override
