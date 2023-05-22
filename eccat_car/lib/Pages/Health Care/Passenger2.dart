@@ -63,11 +63,19 @@ class _Passenger2State extends State<Passenger2> {
     }
     return Scaffold(
         backgroundColor: Colors.black,
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: backgroundColorDark,
+          title: const Text(
+            "Healthcare",
+            style: headline1,
+          ),
+          iconTheme: IconThemeData(color: whiteText),
+        ),
         body: Container(
             width: screenWidth,
             height: screenHeight - 70,
-            margin: EdgeInsets.only(top: 10),
-            padding: EdgeInsets.only(top: 70, right: 10, left: 10),
+            padding: EdgeInsets.only(top: 30, right: 10, left: 10),
             decoration: BoxDecoration(
               image: DecorationImage(
                   // fit: BoxFit.fill,

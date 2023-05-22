@@ -32,7 +32,6 @@ class _HealthInfoState extends State<HealthInfo> {
           "Healthcare",
           style: headline1,
         ),
-        actions: [],
         iconTheme: IconThemeData(color: whiteText),
       ),
       body: Container(
