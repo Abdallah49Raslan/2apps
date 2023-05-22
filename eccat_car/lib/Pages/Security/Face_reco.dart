@@ -35,7 +35,7 @@ class _FaceRecoState extends State<FaceReco> {
 
   void playSampleSound() async {
     AudioPlayer player = AudioPlayer();
-    await player.setAsset('assets/Security.MP3');
+    await player.setAsset('assets/bump.mp3');
     player.play();
   }
 
@@ -63,6 +63,7 @@ class _FaceRecoState extends State<FaceReco> {
               finger = '$fingerprint';
             });
           }
+          ;
 
           if (unwelcomeFlag != null && unwelcomeFlag!.isNotEmpty) {
             SecuritySound();

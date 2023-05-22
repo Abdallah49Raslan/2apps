@@ -13,6 +13,7 @@ import '../../Health Care/Passenger1.dart';
 import '../../Security/user/user_check.dart';
 import '../../home/components/side_menu.dart';
 import '../../home/models/menu_btn.dart';
+import '../../Health Care/PassengerChoice.dart';
 
 // We are done with our 5th and last episode
 // Thank you so much for watching entire serise
@@ -41,7 +42,7 @@ class _EntryCustomerState extends State<EntryCustomer>
   bool isSideMenuClosed = true;
   int currentpages = 0;
   final screens = [
-    Passenger1(),
+    PassengerChoice(),
     CustomerStartPage(),
     UserCheck(),
     WebViewApp(),

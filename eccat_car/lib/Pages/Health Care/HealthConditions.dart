@@ -16,6 +16,12 @@ void playSampleSound() async {
   player.play();
 }
 
+void playDriverSound() async {
+  AudioPlayer player = AudioPlayer();
+  await player.setAsset('assets/driversound.mp3');
+  player.play();
+}
+
 Widget DTemperatureCondition() {
   if (Ddisplaytemp == null || Ddisplaytemp == 0) {
     return Text(".........",
@@ -34,7 +40,7 @@ Widget DTemperatureCondition() {
         ));
   } else {
     Drivertemp = "Abnormal";
-    SoundCondition();
+    DriverSoundCondition();
     AwesomeNotifications().createNotification(
         content: NotificationContent(
       id: 1,
@@ -160,7 +166,7 @@ Widget DHeartRateCondition() {
         ));
   } else {
     Driverheart = "Abnormal";
-    SoundCondition();
+    DriverSoundCondition();
     AwesomeNotifications().createNotification(
         content: NotificationContent(
       id: 22,
@@ -286,7 +292,7 @@ Widget DOximeterCondition() {
         ));
   } else {
     Driveroxi = "Abnormal";
-    SoundCondition();
+    DriverSoundCondition();
     AwesomeNotifications().createNotification(
         content: NotificationContent(
       id: 25,
@@ -420,15 +426,23 @@ Widget DAlcoholCondition() {
 }
 
 void SoundCondition() {
-  if (Drivertemp == "Abnormal" ||
+  if ( //Drivertemp == "Abnormal" ||
       P1temp == "Abnormal" ||
-      P2temp == "Abnormal" ||
-      Driverheart == "Abnormal" ||
-      P1heart == "Abnormal" ||
-      P2heart == "Abnormal" ||
-      Driveroxi == "Abnormal" ||
-      P1oxi == "Abnormal" ||
-      P2oxi == "Abnormal") {
+          P2temp == "Abnormal" ||
+          //Driverheart == "Abnormal" ||
+          P1heart == "Abnormal" ||
+          P2heart == "Abnormal" ||
+          //Driveroxi == "Abnormal" ||
+          P1oxi == "Abnormal" ||
+          P2oxi == "Abnormal") {
     return playSampleSound();
+  }
+}
+
+void DriverSoundCondition() {
+  if (Drivertemp == "Abnormal" ||
+      Driverheart == "Abnormal" ||
+      Driveroxi == "Abnormal") {
+    return playDriverSound();
   }
 }

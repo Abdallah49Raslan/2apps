@@ -52,9 +52,17 @@ class _passenger1_uiState extends State<passenger1_ui> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     double childAspectvalue = 2;
+    double Titlefontsize = 20;
+    double Iconvalue = 30;
+    double normalfontsize = 25;
+    double infofontsize = 20;
     if (screenWidth > 480) {
       // If width is more than 480, set a new font value
       childAspectvalue = 2.5;
+      Titlefontsize = 35;
+      Iconvalue = 40;
+      normalfontsize = 30;
+      infofontsize = 25;
     }
     return Scaffold(
         backgroundColor: Colors.black,
@@ -103,7 +111,7 @@ class _passenger1_uiState extends State<passenger1_ui> {
                                   Text(
                                     "Heart Rate",
                                     style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: Titlefontsize,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),
                                   ),
@@ -113,8 +121,8 @@ class _passenger1_uiState extends State<passenger1_ui> {
                                     right: 6,
                                     child: SvgPicture.asset(
                                       "assets/icons/heart-rate.svg",
-                                      height: 30,
-                                      width: 30,
+                                      height: Iconvalue,
+                                      width: Iconvalue,
                                       color: Colors.red,
                                     ),
                                   ),
@@ -128,7 +136,7 @@ class _passenger1_uiState extends State<passenger1_ui> {
                                   Text(
                                     '$P1displayheartRate',
                                     style: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: normalfontsize,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
                                     ),
@@ -136,7 +144,7 @@ class _passenger1_uiState extends State<passenger1_ui> {
                                   Text(
                                     " BPM",
                                     style: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: normalfontsize,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
                                     ),
@@ -159,7 +167,7 @@ class _passenger1_uiState extends State<passenger1_ui> {
                                         Text(
                                           "60  : 100\nNormal",
                                           style: TextStyle(
-                                            fontSize: 20,
+                                            fontSize: infofontsize,
                                             color: Colors.white,
                                           ),
                                         ),
@@ -186,7 +194,7 @@ class _passenger1_uiState extends State<passenger1_ui> {
                                   Text(
                                     "Temperature",
                                     style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: Titlefontsize,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),
                                   ),
@@ -196,8 +204,8 @@ class _passenger1_uiState extends State<passenger1_ui> {
                                     right: 6,
                                     child: SvgPicture.asset(
                                       "assets/icons/temperature-high-solid-svgrepo-com.svg",
-                                      height: 30,
-                                      width: 30,
+                                      height: Iconvalue,
+                                      width: Iconvalue,
                                       color: Colors.orange,
                                     ),
                                   ),
@@ -211,7 +219,7 @@ class _passenger1_uiState extends State<passenger1_ui> {
                                   Text(
                                     '$P1displaytemp',
                                     style: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: normalfontsize,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
                                     ),
@@ -219,7 +227,7 @@ class _passenger1_uiState extends State<passenger1_ui> {
                                   Text(
                                     " °C",
                                     style: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: normalfontsize,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
                                     ),
@@ -242,7 +250,7 @@ class _passenger1_uiState extends State<passenger1_ui> {
                                         Text(
                                           "36  : 37.2\nNormal",
                                           style: TextStyle(
-                                            fontSize: 20,
+                                            fontSize: infofontsize,
                                             color: Colors.white,
                                           ),
                                         ),
@@ -269,7 +277,7 @@ class _passenger1_uiState extends State<passenger1_ui> {
                                   Text(
                                     "Oximeter",
                                     style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: Titlefontsize,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),
                                   ),
@@ -279,8 +287,8 @@ class _passenger1_uiState extends State<passenger1_ui> {
                                     right: 6,
                                     child: Image.asset(
                                       "assets/icons/oxi3.png",
-                                      height: 30,
-                                      width: 30,
+                                      height: Iconvalue,
+                                      width: Iconvalue,
                                       color: Colors.blue,
                                     ),
                                   ),
@@ -294,7 +302,7 @@ class _passenger1_uiState extends State<passenger1_ui> {
                                   Text(
                                     '$P1displayoximeter',
                                     style: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: normalfontsize,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
                                     ),
@@ -302,7 +310,7 @@ class _passenger1_uiState extends State<passenger1_ui> {
                                   Text(
                                     " SPO2",
                                     style: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: normalfontsize,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
                                     ),
@@ -325,7 +333,7 @@ class _passenger1_uiState extends State<passenger1_ui> {
                                         Text(
                                           "90  : 100\nNormal",
                                           style: TextStyle(
-                                            fontSize: 20,
+                                            fontSize: infofontsize,
                                             color: Colors.white,
                                           ),
                                         ),

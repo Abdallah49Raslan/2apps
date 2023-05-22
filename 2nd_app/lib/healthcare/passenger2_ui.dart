@@ -5,19 +5,22 @@ import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../core/colors.dart';
-import '../../core/globalvariables.dart';
-import '../../core/text_style.dart';
-import 'HealthConditions.dart';
+// import '../../core/colors.dart';
+// import '../../core/globalvariables.dart';
+// import '../../core/text_style.dart';
+import '../constants.dart';
+// import 'HealthConditions.dart';
+import 'global_variabs.dart';
+import 'health_conditions.dart';
 
-class Passenger1 extends StatefulWidget {
-  const Passenger1({super.key});
+class passenger2_ui extends StatefulWidget {
+  const passenger2_ui({super.key});
 
   @override
-  State<Passenger1> createState() => _Passenger1State();
+  State<passenger2_ui> createState() => _passenger2_uiState();
 }
 
-class _Passenger1State extends State<Passenger1> {
+class _passenger2_uiState extends State<passenger2_ui> {
   final database = FirebaseDatabase.instance.reference();
   late StreamSubscription outputstream;
 
@@ -29,17 +32,17 @@ class _Passenger1State extends State<Passenger1> {
   void activateListeners() {
     outputstream = database.child('HealthDatabase').onValue.listen((event) {
       //Passenger1 values
-      final num? P1heartRate =
-          event.snapshot.child('passenger1heartRate').value as num;
-      final num? P1temperature =
-          event.snapshot.child('passenger1temperature').value as num;
-      final num? P1oximeter =
-          event.snapshot.child('passenger1oximeter').value as num;
+      final num? P2heartRate =
+          event.snapshot.child('passenger2heartRate').value as num;
+      final num? P2temperature =
+          event.snapshot.child('passenger2temperature').value as num;
+      final num? P2oximeter =
+          event.snapshot.child('passenger2oximeter').value as num;
 
       setState(() {
-        P1displaytemp = P1temperature!;
-        P1displayheartRate = P1heartRate!;
-        P1displayoximeter = P1oximeter!;
+        P2displaytemp = P2temperature!;
+        P2displayheartRate = P2heartRate!;
+        P2displayoximeter = P2oximeter!;
       });
     });
   }
@@ -131,7 +134,7 @@ class _Passenger1State extends State<Passenger1> {
                               Row(
                                 children: [
                                   Text(
-                                    '$P1displayheartRate',
+                                    '$P2displayheartRate',
                                     style: TextStyle(
                                       fontSize: normalfontsize,
                                       fontWeight: FontWeight.bold,
@@ -156,7 +159,7 @@ class _Passenger1State extends State<Passenger1> {
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
-                                      children: [P1HeartRateCondition()],
+                                      children: [P2HeartRateCondition()],
                                     ),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.end,
@@ -214,7 +217,7 @@ class _Passenger1State extends State<Passenger1> {
                               Row(
                                 children: [
                                   Text(
-                                    '$P1displaytemp',
+                                    '$P2displaytemp',
                                     style: TextStyle(
                                       fontSize: normalfontsize,
                                       fontWeight: FontWeight.bold,
@@ -239,7 +242,7 @@ class _Passenger1State extends State<Passenger1> {
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
-                                      children: [P1TemperatureCondition()],
+                                      children: [P2TemperatureCondition()],
                                     ),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.end,
@@ -297,7 +300,7 @@ class _Passenger1State extends State<Passenger1> {
                               Row(
                                 children: [
                                   Text(
-                                    '$P1displayoximeter',
+                                    '$P2displayoximeter',
                                     style: TextStyle(
                                       fontSize: normalfontsize,
                                       fontWeight: FontWeight.bold,
@@ -322,7 +325,7 @@ class _Passenger1State extends State<Passenger1> {
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
-                                      children: [P1OximeterCondition()],
+                                      children: [P2OximeterCondition()],
                                     ),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.end,
