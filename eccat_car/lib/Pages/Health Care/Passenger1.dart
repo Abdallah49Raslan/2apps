@@ -4,6 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../core/colors.dart';
 import '../../core/globalvariables.dart';
+import '../../core/text_style.dart';
 import 'HealthConditions.dart';
 
 class Passenger1 extends StatefulWidget {
