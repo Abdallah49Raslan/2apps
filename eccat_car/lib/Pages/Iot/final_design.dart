@@ -84,7 +84,7 @@ class _IoTPageState extends State<IoTPage> {
                               double p = 0.5;
                               b = snapshot.data?.snapshot.value;
                               var B = double.parse(b);
-                              if (B > 20) {
+                              if (B < 20) {
                                 p = B / 100;
                                 AwesomeNotifications().createNotification(
                                   content: NotificationContent(
