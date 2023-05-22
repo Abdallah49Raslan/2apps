@@ -4,7 +4,6 @@ import 'package:eccat_car/Pages/AI/controller/controller_bindings.dart';
 import 'package:eccat_car/Pages/started_pages/Driver/Driver_start.dart';
 import 'package:eccat_car/firebase_options.dart';
 import 'package:eccat_car/logic/auth.dart';
-import 'package:eccat_car/splash_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

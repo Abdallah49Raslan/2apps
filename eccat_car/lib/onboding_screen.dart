@@ -31,6 +31,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: blackBG,
       body: Stack(
@@ -50,15 +52,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             // Before that
             top: isSignInDialogShown ? -50 : 0,
             duration: const Duration(milliseconds: 240),
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
+            height:screenHeight,
+            width:screenWidth ,
             child: SafeArea(
               child: Stack(
                 children: [
                   Align(
                     alignment: Alignment.topLeft,
                     child: Container(
-                      height: 300,
+                      height: screenHeight / 3,
                       child: Image.asset(
                         'assets/image/Home_logo.png',
                       ),

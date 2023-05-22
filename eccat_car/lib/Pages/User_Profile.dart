@@ -6,6 +6,8 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import '../core/colors.dart';
+import '../widget/text_fild.dart';
+import 'Security/Drivers.dart';
 
 class UserInfoPage extends StatefulWidget {
   const UserInfoPage({Key? key}) : super(key: key);
@@ -29,6 +31,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
   String? urlPhoto;
 
   bool _isLoading = false;
+  bool _isOwner = false; // Flag to track if user is an owner
 
   @override
   void initState() {
@@ -40,6 +43,15 @@ class _UserInfoPageState extends State<UserInfoPage> {
         _emailController.text = snapshot.data()!['email'] ?? '';
         _phoneNumberController.text = snapshot.data()!['phone'] ?? '';
         urlPhoto = snapshot.data()!['photoUrl'] ?? '';
+      });
+    });
+
+    // Retrieve user role from Firestore or any other method
+    // Here, I assume 'role' field in 'users' collection indicates the user role
+    _firestore.collection('users').doc(_user.uid).get().then((snapshot) {
+      setState(() {
+        final role = snapshot.data()!['user'];
+        _isOwner = role == 'Owner';
       });
     });
   }
@@ -105,43 +117,32 @@ class _UserInfoPageState extends State<UserInfoPage> {
                   'Name:',
                   style: headline2,
                 ),
-                const SizedBox(height: 8),
-                TextFormField(
+                textField(
                   controller: _nameController,
-                  decoration: const InputDecoration(
-                    hintText: 'Enter your name',
-                    border: OutlineInputBorder(),
-                  ),
+                  hintTxt: 'Enter your name',
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 10),
                 Text(
                   'Email:',
                   style: headline2,
                 ),
-                const SizedBox(height: 8),
-                TextFormField(
+                textField(
                   controller: _emailController,
-                  decoration: const InputDecoration(
-                    hintText: 'Enter your email',
-                    border: OutlineInputBorder(),
-                  ),
+                  hintTxt: 'Enter your email',
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 10),
                 Text(
                   'Phone Number:',
                   style: headline2,
                 ),
-                TextFormField(
+                textField(
                   controller: _phoneNumberController,
-                  decoration: const InputDecoration(
-                    hintText: 'Enter your phone number',
-                    border: OutlineInputBorder(),
-                  ),
+                  hintTxt: 'Enter your phone number',
                 ),
 
-                const SizedBox(height: 16),
+                const SizedBox(height: 10),
 
-                //update info
+                // Update info
                 ElevatedButton(
                   onPressed: _isLoading ? null : _updateUserInfo,
                   child: _isLoading
@@ -149,33 +150,27 @@ class _UserInfoPageState extends State<UserInfoPage> {
                       : const Text('Update Info'),
                 ),
 
-                //change password
+                // Change password
                 ElevatedButton(
                   onPressed: _isLoading ? null : _changePassword,
                   child: _isLoading
                       ? const CircularProgressIndicator()
                       : const Text('Change Password'),
                 ),
-                const SizedBox(height: 25),
+                const SizedBox(height: 20),
                 Text(
                   'Add info about you',
                   style: headline2,
                 ),
                 const SizedBox(height: 8),
-                TextFormField(
+                textField(
                   controller: _newFieldKeyController,
-                  decoration: const InputDecoration(
-                    hintText: 'Enter new field',
-                    border: OutlineInputBorder(),
-                  ),
+                  hintTxt: 'Enter new field',
                 ),
-                const SizedBox(height: 16),
-                TextFormField(
+                const SizedBox(height: 5),
+                textField(
                   controller: _newFieldValueController,
-                  decoration: const InputDecoration(
-                    hintText: 'Enter new value of this field ',
-                    border: OutlineInputBorder(),
-                  ),
+                  hintTxt: 'Enter new value of this field ',
                 ),
                 const SizedBox(height: 16),
                 ElevatedButton(
@@ -184,6 +179,20 @@ class _UserInfoPageState extends State<UserInfoPage> {
                       ? const CircularProgressIndicator()
                       : const Text('Add Field'),
                 ),
+                const SizedBox(height: 10),
+                // Conditionally render the button based on user role
+                if (_isOwner)
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (builder) => DriversPage()),
+                      );
+                    },
+                    child: _isLoading
+                        ? const CircularProgressIndicator()
+                        : const Text('Add driver'),
+                  ),
                 const SizedBox(height: 30),
               ],
             ),

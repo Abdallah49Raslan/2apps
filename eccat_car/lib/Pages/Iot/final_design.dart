@@ -1,18 +1,9 @@
-import 'dart:async';
-import 'dart:math';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_database/firebase_database.dart';
 import '../../core/colors.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'dart:convert';
 
 class IoTPage extends StatefulWidget {
   const IoTPage({super.key});
@@ -43,20 +34,18 @@ class _IoTPageState extends State<IoTPage> {
     // While using transactions you can still listen to all
     // incoming messages!
 
-    var seatbelt = refdb.child('seatbelt');
-    var speed = refdb.child('speed');
-    var battery = refdb.child('battery');
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.black,
-        title: Text("Iot",
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: whiteText,
-            )),
+        title: Text(
+          "Iot",
+          style: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: whiteText,
+          ),
+        ),
       ),
       body: Container(
         width: 600,
@@ -85,84 +74,86 @@ class _IoTPageState extends State<IoTPage> {
                   ),
                 ),
                 InkWell(
-                    child: Expanded(
-                        child: Container(
-                            child: StreamBuilder(
-                                stream: refdb.child('battery/batt').onValue,
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasData) {
-                                    var b;
-                                    double p = 0.5;
-                                    b = snapshot.data?.snapshot.value;
-                                    var B = double.parse(b);
-                                    if (B > 20) {
-                                      p = B / 100;
-                                      // AwesomeNotifications().createNotification(
-                                      //     content: NotificationContent(
-                                      //   id: 50,
-                                      //   channelKey: "schedule",
-                                      //   title: "battery Alert",
-                                      //   body: "battery is very low",
-                                      //   notificationLayout:
-                                      //       NotificationLayout.BigPicture,
-                                      //   wakeUpScreen: true,
-                                      //   locked: true,
-                                      //   displayOnBackground: true,
-                                      //   actionType: ActionType.Default,
-                                      // ));
-                                      return new CircularPercentIndicator(
-                                        animationDuration: 4500,
-                                        radius: 100.0,
-                                        lineWidth: 25.0,
-                                        animation: true,
-                                        percent: p,
-                                        center: new Text(
-                                          "${B.toInt()} %",
-                                          style: new TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 30.0,
-                                              color: Colors.white),
-                                        ),
-                                        circularStrokeCap:
-                                            CircularStrokeCap.round,
-                                        progressColor: Colors.green,
-                                      );
-                                    } else if (B <= 20) {
-                                      p = B / 100;
-                                      return new CircularPercentIndicator(
-                                        animationDuration: 4500,
-                                        radius: 100.0,
-                                        lineWidth: 25.0,
-                                        animation: true,
-                                        percent: p,
-                                        center: new Text("${B.toInt()} %",
-                                            style: new TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 40.0,
-                                                color: Colors.red)),
-                                        circularStrokeCap:
-                                            CircularStrokeCap.round,
-                                        progressColor: Colors.red,
-                                      );
-                                    }
-                                  }
-                                  return new CircularPercentIndicator(
-                                    animationDuration: 4500,
-                                    radius: 100.0,
-                                    lineWidth: 25.0,
-                                    animation: true,
-                                    percent: 0.0,
-                                    center: new Text(
-                                      "0 %",
+                  child: Expanded(
+                    child: Container(
+                      child: StreamBuilder(
+                          stream: refdb.child('battery/batt').onValue,
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              var b;
+                              double p = 0.5;
+                              b = snapshot.data?.snapshot.value;
+                              var B = double.parse(b);
+                              if (B > 20) {
+                                p = B / 100;
+                                AwesomeNotifications().createNotification(
+                                  content: NotificationContent(
+                                    id: 50,
+                                    channelKey: "schedule",
+                                    title: "battery Alert",
+                                    body: "battery is very low",
+                                    notificationLayout:
+                                        NotificationLayout.BigPicture,
+                                    wakeUpScreen: true,
+                                    locked: true,
+                                    displayOnBackground: true,
+                                    actionType: ActionType.Default,
+                                  ),
+                                );
+                                return new CircularPercentIndicator(
+                                  animationDuration: 4500,
+                                  radius: 100.0,
+                                  lineWidth: 25.0,
+                                  animation: true,
+                                  percent: p,
+                                  center: new Text(
+                                    "${B.toInt()} %",
+                                    style: new TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 30.0,
+                                        color: Colors.white),
+                                  ),
+                                  circularStrokeCap: CircularStrokeCap.round,
+                                  progressColor: Colors.green,
+                                );
+                              } else if (B <= 20) {
+                                p = B / 100;
+                                return new CircularPercentIndicator(
+                                  animationDuration: 4500,
+                                  radius: 100.0,
+                                  lineWidth: 25.0,
+                                  animation: true,
+                                  percent: p,
+                                  center: new Text("${B.toInt()} %",
                                       style: new TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 30.0,
-                                          color: Colors.white),
-                                    ),
-                                    circularStrokeCap: CircularStrokeCap.round,
-                                    progressColor: Colors.green,
-                                  );
-                                })))),
+                                          fontSize: 40.0,
+                                          color: Colors.red)),
+                                  circularStrokeCap: CircularStrokeCap.round,
+                                  progressColor: Colors.red,
+                                );
+                              }
+                            }
+                            return new CircularPercentIndicator(
+                              animationDuration: 4500,
+                              radius: 100.0,
+                              lineWidth: 25.0,
+                              animation: true,
+                              percent: 0.0,
+                              center: new Text(
+                                "0 %",
+                                style: new TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 30.0,
+                                    color: Colors.white),
+                              ),
+                              circularStrokeCap: CircularStrokeCap.round,
+                              progressColor: Colors.green,
+                            );
+                          }),
+                    ),
+                  ),
+                ),
               ]),
             ),
             SizedBox(
@@ -187,92 +178,36 @@ class _IoTPageState extends State<IoTPage> {
                     ),
                   ),
                   InkWell(
-                      child: Container(
-                          margin: EdgeInsets.only(top: 20),
-                          width: 400,
-                          height: 300,
-                          child: Expanded(
-                              child: Container(
-                            child: StreamBuilder(
-                                stream: refdb.child('speed/sp').onValue,
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasData) {
-                                    var num;
+                    child: Container(
+                      margin: EdgeInsets.only(top: 20),
+                      width: 400,
+                      height: 300,
+                      child: Expanded(
+                        child: Container(
+                          child: StreamBuilder(
+                              stream: refdb.child('speed/sp').onValue,
+                              builder: (context, snapshot) {
+                                if (snapshot.hasData) {
+                                  var num;
 
-                                    num = snapshot.data?.snapshot.value;
+                                  num = snapshot.data?.snapshot.value;
 
-                                    var c = double.parse(num);
+                                  var c = double.parse(num);
 
-                                    if (c >= 0.5) {
-                                      // AwesomeNotifications().createNotification(
-                                      //     content: NotificationContent(
-                                      //   id: 51,
-                                      //   channelKey: "schedule",
-                                      //   title: "speed Alert",
-                                      //   body: "speed is very high",
-                                      //   notificationLayout:
-                                      //       NotificationLayout.BigPicture,
-                                      //   wakeUpScreen: true,
-                                      //   locked: true,
-                                      //   displayOnBackground: true,
-                                      //   actionType: ActionType.Default,
-                                      // ));
-                                      return SfRadialGauge(
-                                        enableLoadingAnimation: true,
-                                        animationDuration: 4500,
-                                        axes: <RadialAxis>[
-                                          RadialAxis(
-                                            minimum: 0,
-                                            maximum: 60,
-                                            //  axisLineStyle:AxisLineStyle(color: Colors.white) ,
-                                            axisLabelStyle: GaugeTextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold),
-
-                                            pointers: <GaugePointer>[
-                                              NeedlePointer(
-                                                needleColor: Colors.orange,
-                                                value: c,
-                                                enableAnimation: true,
-                                              )
-                                              //
-                                            ],
-                                            ranges: <GaugeRange>[
-                                              GaugeRange(
-                                                startValue: 0,
-                                                endValue: 60,
-                                                color: Colors.blue,
-                                              ),
-                                              GaugeRange(
-                                                startValue: 60,
-                                                endValue: 140,
-                                                color: Colors.blue,
-                                              ),
-                                              GaugeRange(
-                                                startValue: 140,
-                                                endValue: 200,
-                                                color: Colors.blue,
-                                              )
-                                            ],
-                                            annotations: <GaugeAnnotation>[
-                                              GaugeAnnotation(
-                                                widget: Text(
-                                                  '${c} K/H',
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 25,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                                positionFactor: 0.5,
-                                                angle: 90,
-                                              )
-                                            ],
-                                          )
-                                        ],
-                                      );
-                                    }
-
+                                  if (c >= 0.5) {
+                                    AwesomeNotifications().createNotification(
+                                        content: NotificationContent(
+                                      id: 51,
+                                      channelKey: "schedule",
+                                      title: "speed Alert",
+                                      body: "speed is very high",
+                                      notificationLayout:
+                                          NotificationLayout.BigPicture,
+                                      wakeUpScreen: true,
+                                      locked: true,
+                                      displayOnBackground: true,
+                                      actionType: ActionType.Default,
+                                    ));
                                     return SfRadialGauge(
                                       enableLoadingAnimation: true,
                                       animationDuration: 4500,
@@ -288,7 +223,7 @@ class _IoTPageState extends State<IoTPage> {
                                           pointers: <GaugePointer>[
                                             NeedlePointer(
                                               needleColor: Colors.orange,
-                                              value: num,
+                                              value: c,
                                               enableAnimation: true,
                                             )
                                             //
@@ -322,73 +257,130 @@ class _IoTPageState extends State<IoTPage> {
                                               ),
                                               positionFactor: 0.5,
                                               angle: 90,
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    );
-                                  } else {
-                                    // return Container(
-                                    //   child: Text('data'),
-                                    // );
-                                    return SfRadialGauge(
-                                      enableLoadingAnimation: true,
-                                      animationDuration: 4500,
-                                      axes: <RadialAxis>[
-                                        RadialAxis(
-                                          minimum: 0,
-                                          maximum: 60,
-                                          //  axisLineStyle:AxisLineStyle(color: Colors.white) ,
-                                          axisLabelStyle: GaugeTextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
-
-                                          pointers: <GaugePointer>[
-                                            NeedlePointer(
-                                              //needleColor: Colors.white,
-                                              value: 0,
-                                              enableAnimation: true,
-                                            )
-                                          ],
-                                          ranges: <GaugeRange>[
-                                            GaugeRange(
-                                              startValue: 0,
-                                              endValue: 60,
-                                              color: Colors.green,
                                             ),
-                                            GaugeRange(
-                                              startValue: 60,
-                                              endValue: 140,
-                                              color: Colors.yellow,
-                                            ),
-                                            GaugeRange(
-                                              startValue: 140,
-                                              endValue: 200,
-                                              color: Colors.red,
-                                            )
                                           ],
-                                          annotations: <GaugeAnnotation>[
-                                            GaugeAnnotation(
-                                              widget: Text(
-                                                '0 K/H',
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 25,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              positionFactor: 0.5,
-                                              angle: 90,
-                                            )
-                                          ],
-                                        )
+                                        ),
                                       ],
-                                      // backgroundColor:
-                                      //     Color.fromARGB(255, 8, 21, 65),
                                     );
                                   }
-                                }),
-                          )))),
+
+                                  return SfRadialGauge(
+                                    enableLoadingAnimation: true,
+                                    animationDuration: 4500,
+                                    axes: <RadialAxis>[
+                                      RadialAxis(
+                                        minimum: 0,
+                                        maximum: 60,
+                                        //  axisLineStyle:AxisLineStyle(color: Colors.white) ,
+                                        axisLabelStyle: GaugeTextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold),
+
+                                        pointers: <GaugePointer>[
+                                          NeedlePointer(
+                                            needleColor: Colors.orange,
+                                            value: num,
+                                            enableAnimation: true,
+                                          ),
+                                          //
+                                        ],
+                                        ranges: <GaugeRange>[
+                                          GaugeRange(
+                                            startValue: 0,
+                                            endValue: 60,
+                                            color: Colors.blue,
+                                          ),
+                                          GaugeRange(
+                                            startValue: 60,
+                                            endValue: 140,
+                                            color: Colors.blue,
+                                          ),
+                                          GaugeRange(
+                                            startValue: 140,
+                                            endValue: 200,
+                                            color: Colors.blue,
+                                          )
+                                        ],
+                                        annotations: <GaugeAnnotation>[
+                                          GaugeAnnotation(
+                                            widget: Text(
+                                              '${c} K/H',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            positionFactor: 0.5,
+                                            angle: 90,
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  );
+                                } else {
+                                  // return Container(
+                                  //   child: Text('data'),
+                                  // );
+                                  return SfRadialGauge(
+                                    enableLoadingAnimation: true,
+                                    animationDuration: 4500,
+                                    axes: <RadialAxis>[
+                                      RadialAxis(
+                                        minimum: 0,
+                                        maximum: 60,
+                                        //  axisLineStyle:AxisLineStyle(color: Colors.white) ,
+                                        axisLabelStyle: GaugeTextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold),
+
+                                        pointers: <GaugePointer>[
+                                          NeedlePointer(
+                                            //needleColor: Colors.white,
+                                            value: 0,
+                                            enableAnimation: true,
+                                          ),
+                                        ],
+                                        ranges: <GaugeRange>[
+                                          GaugeRange(
+                                            startValue: 0,
+                                            endValue: 60,
+                                            color: Colors.green,
+                                          ),
+                                          GaugeRange(
+                                            startValue: 60,
+                                            endValue: 140,
+                                            color: Colors.yellow,
+                                          ),
+                                          GaugeRange(
+                                            startValue: 140,
+                                            endValue: 200,
+                                            color: Colors.red,
+                                          )
+                                        ],
+                                        annotations: <GaugeAnnotation>[
+                                          GaugeAnnotation(
+                                            widget: Text(
+                                              '0 K/H',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            positionFactor: 0.5,
+                                            angle: 90,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                    // backgroundColor:
+                                    //     Color.fromARGB(255, 8, 21, 65),
+                                  );
+                                }
+                              }),
+                        ),
+                      ),
+                    ),
+                  ),
                 ]),
               ),
               // Divider(color: Colors.white,
@@ -432,30 +424,30 @@ class _IoTPageState extends State<IoTPage> {
 
                                       if (S == 9.00) {
                                         return Container(
-                                            padding: EdgeInsets.only(
-                                                top: 10, left: 10),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.green,
-                                                    width: 3),
-                                                color: Color.fromARGB(
-                                                    255, 56, 56, 56),
-                                                borderRadius:
-                                                    BorderRadius.circular(120)),
-                                            width: 250,
-                                            height: 250,
-                                            child: Center(
-                                              child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Divider(
-                                                      height: 5,
-                                                    ),
-                                                    Center(
-                                                        child: Container(
+                                          padding: EdgeInsets.only(
+                                              top: 10, left: 10),
+                                          decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Colors.green,
+                                                  width: 3),
+                                              color: Color.fromARGB(
+                                                  255, 56, 56, 56),
+                                              borderRadius:
+                                                  BorderRadius.circular(120)),
+                                          width: 250,
+                                          height: 250,
+                                          child: Center(
+                                            child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Divider(
+                                                    height: 5,
+                                                  ),
+                                                  Center(
+                                                    child: Container(
                                                       margin: EdgeInsets.only(
                                                           top: 30, right: 20),
                                                       height: 150,
@@ -466,10 +458,12 @@ class _IoTPageState extends State<IoTPage> {
                                                         'assets/icons/s.png',
                                                         color: Colors.green,
                                                       ),
-                                                    )),
-                                                    Divider(height: 20),
-                                                  ]),
-                                            ));
+                                                    ),
+                                                  ),
+                                                  Divider(height: 20),
+                                                ]),
+                                          ),
+                                        );
                                       } else if (S == 0) {
                                         AwesomeNotifications()
                                             .createNotification(
@@ -486,46 +480,45 @@ class _IoTPageState extends State<IoTPage> {
                                           actionType: ActionType.Default,
                                         ));
                                         return Container(
-                                            padding: EdgeInsets.only(
-                                                top: 10, left: 10),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.red,
-                                                    width: 3),
-                                                color: Color.fromARGB(
-                                                    255, 56, 56, 56),
-                                                borderRadius:
-                                                    BorderRadius.circular(120)),
-                                            width: 250,
-                                            height: 250,
-                                            child: Center(
-                                              child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Divider(
-                                                      height: 5,
+                                          padding: EdgeInsets.only(
+                                              top: 10, left: 10),
+                                          decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Colors.red, width: 3),
+                                              color: Color.fromARGB(
+                                                  255, 56, 56, 56),
+                                              borderRadius:
+                                                  BorderRadius.circular(120)),
+                                          width: 250,
+                                          height: 250,
+                                          child: Center(
+                                            child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Divider(
+                                                    height: 5,
+                                                  ),
+                                                  Center(
+                                                    child: Container(
+                                                      margin: EdgeInsets.only(
+                                                          top: 30, right: 20),
+                                                      height: 150,
+                                                      width: 150,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Image.asset(
+                                                        'assets/icons/s.png',
+                                                        color: Colors.red,
+                                                      ),
                                                     ),
-                                                    Center(
-                                                      child: Container(
-                                                          margin:
-                                                              EdgeInsets.only(
-                                                                  top: 30,
-                                                                  right: 20),
-                                                          height: 150,
-                                                          width: 150,
-                                                          decoration:
-                                                              BoxDecoration(),
-                                                          child: Image.asset(
-                                                            'assets/icons/s.png',
-                                                            color: Colors.red,
-                                                          )),
-                                                    ),
-                                                    Divider(height: 20),
-                                                  ]),
-                                            ));
+                                                  ),
+                                                  Divider(height: 20),
+                                                ]),
+                                          ),
+                                        );
                                       }
                                     }
 
@@ -552,16 +545,17 @@ class _IoTPageState extends State<IoTPage> {
                                                 height: 5,
                                               ),
                                               Center(
-                                                  child: Container(
-                                                margin: EdgeInsets.only(
-                                                    top: 30, right: 20),
-                                                height: 150,
-                                                width: 150,
-                                                decoration: BoxDecoration(),
-                                                child: Image.asset(
-                                                    'assets/icons/s.png',
-                                                    color: Colors.black),
-                                              )),
+                                                child: Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: 30, right: 20),
+                                                  height: 150,
+                                                  width: 150,
+                                                  decoration: BoxDecoration(),
+                                                  child: Image.asset(
+                                                      'assets/icons/s.png',
+                                                      color: Colors.black),
+                                                ),
+                                              ),
                                               Divider(height: 20),
                                             ]),
                                       ),

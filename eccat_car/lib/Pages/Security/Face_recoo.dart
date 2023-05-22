@@ -61,25 +61,8 @@ class _FaceRecoState extends State<FaceReco> {
               welcomeName = '$welcomeFlagValue';
               finger = '$fingerprint';
             });
-          } else {
-            //SecuritySound();
-            AwesomeNotifications().createNotification(
-              content: NotificationContent(
-                id: 30,
-                channelKey: "schedule",
-                title: "Warning Finger Print",
-                body: "Driver is unauthorized",
-                bigPicture:
-                    "asset://assets/icons/Attention-sign-icon.png", // warning icon
-                notificationLayout: NotificationLayout.BigPicture,
-                largeIcon: "asset://assets/icons/Attention-sign-icon.png",
-                wakeUpScreen: true,
-                locked: true,
-                displayOnBackground: true,
-                actionType: ActionType.Default,
-              ),
-            );
           }
+          ;
 
           if (unwelcomeFlag != null && unwelcomeFlag!.isNotEmpty) {
             SecuritySound();
@@ -100,10 +83,15 @@ class _FaceRecoState extends State<FaceReco> {
               ),
             );
           }
+
           if (welcomeFlagValue != null && welcomeFlagValue.isNotEmpty) {
             AwesomeNotifications().createNotification(
               content: NotificationContent(
+<<<<<<< HEAD:eccat_car/lib/Pages/Security/Face_recoo.dart
                 id: 32,
+=======
+                id: 30,
+>>>>>>> 82dda62ffd6cfd40f18e31ae45c85fd978a3562f:eccat_car/lib/Pages/Security/Face_reco.dart
                 channelKey: "schedule",
                 title: "Welcome",
                 body: "$welcomeName",
