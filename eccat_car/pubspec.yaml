@@ -111,6 +111,7 @@ flutter:
     - assets\Emergency.MP3
     - assets\Security.MP3
     - assets\bump.mp3
+    - assets\driversound.mp3
 
   fonts:
       - family: SF Pro
