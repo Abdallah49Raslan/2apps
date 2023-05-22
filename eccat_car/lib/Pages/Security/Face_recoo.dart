@@ -87,11 +87,7 @@ class _FaceRecoState extends State<FaceReco> {
           if (welcomeFlagValue != null && welcomeFlagValue.isNotEmpty) {
             AwesomeNotifications().createNotification(
               content: NotificationContent(
-<<<<<<< HEAD:eccat_car/lib/Pages/Security/Face_recoo.dart
                 id: 32,
-=======
-                id: 30,
->>>>>>> 82dda62ffd6cfd40f18e31ae45c85fd978a3562f:eccat_car/lib/Pages/Security/Face_reco.dart
                 channelKey: "schedule",
                 title: "Welcome",
                 body: "$welcomeName",
