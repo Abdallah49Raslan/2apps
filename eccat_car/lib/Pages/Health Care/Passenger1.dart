@@ -122,9 +122,7 @@ class _Passenger1State extends State<Passenger1> {
                                             color: Colors.white),
                                       ),
                                       Spacer(),
-                                      Positioned(
-                                        top: 10,
-                                        right: 6,
+                                      Container(
                                         child: SvgPicture.asset(
                                           "assets/icons/heart-rate.svg",
                                           height: Iconvalue,
@@ -207,9 +205,7 @@ class _Passenger1State extends State<Passenger1> {
                                             color: Colors.white),
                                       ),
                                       Spacer(),
-                                      Positioned(
-                                        top: 10,
-                                        right: 6,
+                                      Container(
                                         child: SvgPicture.asset(
                                           "assets/icons/temperature-high-solid-svgrepo-com.svg",
                                           height: Iconvalue,
@@ -292,9 +288,7 @@ class _Passenger1State extends State<Passenger1> {
                                             color: Colors.white),
                                       ),
                                       Spacer(),
-                                      Positioned(
-                                        top: 10,
-                                        right: 6,
+                                      Container(
                                         child: Image.asset(
                                           "assets/icons/oxi3.png",
                                           height: Iconvalue,
