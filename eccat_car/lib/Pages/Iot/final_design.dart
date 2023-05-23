@@ -6,40 +6,38 @@ import 'package:eccat_car/Pages/Iot/SpeedGrid.dart';
 import 'package:eccat_car/Pages/Iot/SeatbeltGrid.dart';
 
 class IoTPage extends StatefulWidget {
-  const IoTPage({super.key});
+  const IoTPage({Key? key}) : super(key: key);
 
   @override
   State<IoTPage> createState() => _IoTPageState();
 }
 
 class _IoTPageState extends State<IoTPage> {
-  var refdb = FirebaseDatabase.instance.ref();
+  late DatabaseReference refdb;
   dynamic display;
   dynamic break_display;
   dynamic light_display;
   dynamic batt_display;
 
-  sebelisteners() {}
-
   @override
   void initState() {
+    refdb = FirebaseDatabase.instance.reference();
     sebelisteners();
-
     super.initState();
   }
 
-  int selectedindex = 0;
+  sebelisteners() {
+    // Implement your seatbelt listeners here
+  }
+
   @override
   Widget build(BuildContext context) {
-    // While using transactions you can still listen to all
-    // incoming messages!
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.black,
         title: Text(
-          "Iot",
+          "IoT",
           style: TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
@@ -52,26 +50,25 @@ class _IoTPageState extends State<IoTPage> {
         height: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage(
-            "assets/icons/Car.png",
-          )),
+            image: AssetImage("assets/icons/Car.png"),
+          ),
           color: Colors.black,
         ),
         child: SingleChildScrollView(
-          child: Column(children: [
-            BatteryGrid(),
-            SizedBox(
-              height: 20,
-            ),
-            Column(children: [
-              SpeedGrid(),
-              // Divider(color: Colors.white,
-              // height: 50,
-              // ),
-
-              SeatbeltGrid(),
-            ]),
-          ]),
+          child: Column(
+            children: [
+              BatteryGrid(),
+              SizedBox(
+                height: 20,
+              ),
+              Column(
+                children: [
+                  SpeedGrid(),
+                  SeatbeltGrid(),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

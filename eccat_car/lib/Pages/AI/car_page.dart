@@ -210,7 +210,8 @@ class _Car_pageState extends State<Car_page> {
                                 height: 400.h,
                                 width: double.infinity,
                               ),
-                            )),
+                            ),
+                            ),
                       );
                     });
                   },

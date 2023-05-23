@@ -1,21 +1,8 @@
-import 'dart:async';
-import 'dart:math';
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_database/firebase_database.dart';
-<<<<<<< HEAD
-=======
-import 'package:awesome_notifications/awesome_notifications.dart';
-
->>>>>>> 7fa1afadbb7c26ee00d83824c3ed77f768ede7c5
 import '../../core/colors.dart';
 
 class IoTPage extends StatefulWidget {
