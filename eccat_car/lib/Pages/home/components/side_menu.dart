@@ -5,13 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import '../../../core/colors.dart';
 import '../../../core/rive_utils.dart';
-import '../../../core/space.dart';
 import '../../../core/text_style.dart';
 import '../../../onboding_screen.dart';
 import '../../../widget/main_button.dart';
 import '../../User_Profile.dart';
 import '../models/rive_asset.dart';
-import 'info_card.dart';
 import 'side_menu_tile.dart';
 
 class SideMenu extends StatefulWidget {

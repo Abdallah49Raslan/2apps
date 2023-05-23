@@ -10,7 +10,6 @@ import 'package:rive/rive.dart';
 import '../../../core/colors.dart';
 import '../../../core/rive_utils.dart';
 import '../../../functions/alertexitapp.dart';
-import '../../AI/search_page.dart';
 import '../../Health Care/darkmode.dart';
 import '../../Security/Face_recoo.dart';
 import '../../home/components/side_menu.dart';

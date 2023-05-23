@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eccat_car/Pages/started_pages/Owner/entry_Owner.dart';
 import 'package:eccat_car/core/colors.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -17,7 +16,6 @@ class Detection extends StatefulWidget {
 }
 
 class _FingerprintPageState extends State<Detection> {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final database = FirebaseDatabase.instance.reference();
   late StreamSubscription outputstream;
   String? unAuth;
@@ -33,7 +31,6 @@ class _FingerprintPageState extends State<Detection> {
   void activateListeners() {
     outputstream = database.child('Security').onValue.listen((event) {
       final Object? unWelcome = event.snapshot.child('unwelcomeflag').value;
-      final Object? fingerprint = event.snapshot.child('fingerprint').value;
 
       // Retrieve driver's information if the welcomeFlagValue matches driverName
 

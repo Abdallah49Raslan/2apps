@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:external_app_launcher/external_app_launcher.dart';
 import '../../../core/colors.dart';
 import '../../../core/space.dart';
-import '../../AI/car_page.dart';
-import '../../Health Care/darkmode.dart';
-import 'package:eccat_car/Info/AIinfo.dart';
 import 'package:eccat_car/Info/IOTinfo.dart';
 import 'package:eccat_car/Info/Healthinfo.dart';
 import 'package:eccat_car/Info/Securityinfo.dart';
-import '../../Iot/final_design.dart';
-import '../../Security/Detection.dart';
 
 class OwnerStartPage extends StatefulWidget {
   const OwnerStartPage({super.key});

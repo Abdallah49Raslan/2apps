@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../core/colors.dart';
 import '../../core/space.dart';
@@ -10,7 +9,6 @@ import '../../onboding_screen.dart';
 import '../../widget/Dropdown_Menu.dart';
 import '../../widget/main_button.dart';
 import '../../widget/text_fild.dart';
-import 'Sign_in/sign_in_form.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -30,7 +28,6 @@ class _SignUpPageState extends State<SignUpPage> {
   bool _isScure = true;
   final List<String> options = ['Driver', 'Customer'];
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   CollectionReference users = FirebaseFirestore.instance.collection('users');
 
   String? email;

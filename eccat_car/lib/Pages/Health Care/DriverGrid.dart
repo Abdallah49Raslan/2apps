@@ -1,21 +1,15 @@
-import 'dart:async';
-import 'dart:ffi';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../core/colors.dart';
 import '../../core/globalvariables.dart';
 import 'HealthConditions.dart';
-import 'package:eccat_car/Pages/Health Care/darkmode.dart';
 
 Widget drivergrid() {
   return Center(
     child: LayoutBuilder(builder: (context, cons) {
       double screenWidth = MediaQuery.of(context).size.width;
       double screenHeight = MediaQuery.of(context).size.height;
-      int index = 1;
       double normalfontSize = 20;
       double titlefontSize = 25;
       double tivefontSize = 15;

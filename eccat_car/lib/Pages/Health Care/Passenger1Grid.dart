@@ -1,8 +1,4 @@
-import 'dart:async';
-import 'dart:ffi';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../core/colors.dart';
@@ -14,25 +10,20 @@ Widget passenger1grid() {
     child: LayoutBuilder(builder: (context, cons) {
       double screenWidth = MediaQuery.of(context).size.width;
       double screenHeight = MediaQuery.of(context).size.height;
-      int index = 1;
       double normalfontSize = 20;
       double titlefontSize = 25;
-      double tivefontSize = 15;
       double hearticonvalue = 20;
       double tempiconvalue = 25;
       double oxiiconvalue = 35;
-      double coholiconvalue = 18;
       double mainSizedBox = 5;
       double wideSizedBox = 35;
       if (screenWidth > 480) {
         // If width is more than 480, set a new font value
         normalfontSize = 30;
         titlefontSize = 35;
-        tivefontSize = 25;
         hearticonvalue = 30;
         tempiconvalue = 35;
         oxiiconvalue = 45;
-        coholiconvalue = 28;
         mainSizedBox = 15;
         wideSizedBox = 140;
       }

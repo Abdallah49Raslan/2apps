@@ -5,7 +5,6 @@ import 'package:eccat_car/Pages/Security/Captures.dart';
 import 'package:eccat_car/core/colors.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import '../../core/text_style.dart';
 import 'Detection.dart';

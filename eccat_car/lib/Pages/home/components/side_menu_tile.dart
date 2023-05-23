@@ -21,10 +21,8 @@ class SideMenuTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     double containerWidth = 288.0;
-    double profileRadius = 40.0;
 
     if (screenWidth > 480) {
-      profileRadius = 80.0;
       containerWidth = screenWidth / 2;
     }
     return Column(

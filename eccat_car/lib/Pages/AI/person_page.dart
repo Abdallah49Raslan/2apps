@@ -1,43 +1,8 @@
-// ignore_for_file: prefer_const_constructors
-
-// import 'package:application_1/src/navigation_controls.dart';
-// import 'package:application_1/src/web_view_stack.dart';
 import 'package:eccat_car/Pages/src/navigation_controls.dart';
 import 'package:eccat_car/Pages/src/web_view_stack.dart';
 import 'package:flutter/material.dart';
-
-// class PersonPage extends StatefulWidget {
-//   const PersonPage({super.key});
-
-//   @override
-//   State<PersonPage> createState() => _PersonPageState();
-// }
-
-// class _PersonPageState extends State<PersonPage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.lightBlue,
-//       body: Center(child: Text('Person',style: TextStyle(fontSize: 50),),),
-//     );
-//   }
-// }
-
-import 'package:flutter/material.dart';
-// import 'package:web_app/src/web_view_stack.dart';
-import 'package:webview_flutter/webview_flutter.dart';
-// import 'src/web_view_stack.dart';
-
-import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-// import 'src/web_view_stack.dart';
-
-import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart'; // ADD
-
-// import 'src/navigation_controls.dart';                  // ADD
-// import 'src/web_view_stack.dart';
 
 class WebViewApp extends StatefulWidget {
   const WebViewApp({super.key});

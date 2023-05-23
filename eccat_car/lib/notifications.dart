@@ -1,8 +1,6 @@
 
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:eccat_car/Pages/AI/controller/controller.dart';
 import 'package:flutter/material.dart';
-import 'package:get/instance_manager.dart';
 
 class Notifications extends StatefulWidget {
   const Notifications({super.key});
@@ -12,7 +10,6 @@ class Notifications extends StatefulWidget {
 }
 
 class _NotificationsState extends State<Notifications> {
-  final _controller = Get.find<controller>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
