@@ -139,7 +139,7 @@ class _EntryCustomerState extends State<EntryCustomer>
           AnimatedPositioned(
             duration: Duration(milliseconds: 200),
             curve: Curves.fastOutSlowIn,
-            left: isSideMenuClosed ? 0 : containerWidth - 100,
+            left: isSideMenuClosed ? 0 : containerWidth - 50,
             top: 16,
             child: MenuBtn(
               riveOnInit: (artboard) {

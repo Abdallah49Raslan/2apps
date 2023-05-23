@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/percent_indicator.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:firebase_database/firebase_database.dart';
 import '../../core/colors.dart';
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:eccat_car/Pages/Iot/BatteryGrid.dart';
 import 'package:eccat_car/Pages/Iot/SpeedGrid.dart';
 import 'package:eccat_car/Pages/Iot/SeatbeltGrid.dart';
