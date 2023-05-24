@@ -1,12 +1,15 @@
 import 'package:eccat_car/core/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import '../../../core/text_style.dart';
 import '../../Authintication/sign_up.dart';
 import 'sign_in_form.dart';
 
 Future<Object?> customSigninDialog(BuildContext context,
     {required ValueChanged onCLosed}) {
+  final screenWidth = MediaQuery.of(context).size.width;
+
   return showGeneralDialog(
     barrierDismissible: true,
     barrierLabel: "Sign In",
@@ -24,7 +27,7 @@ Future<Object?> customSigninDialog(BuildContext context,
     },
     pageBuilder: (context, _, __) => Center(
       child: Container(
-        height: 620,
+        height: screenWidth > 480 ? 700 : 620,
         margin: const EdgeInsets.symmetric(horizontal: 16),
         padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
         decoration: BoxDecoration(
@@ -38,7 +41,9 @@ Future<Object?> customSigninDialog(BuildContext context,
               children: [
                 Text(
                   "Sign In",
-                  style: headline,
+                  style: screenWidth > 480
+                      ? headline.copyWith(fontSize: 60)
+                      : headline,
                 ),
                 const Padding(
                   padding: EdgeInsets.symmetric(vertical: 16),
@@ -62,11 +67,19 @@ Future<Object?> customSigninDialog(BuildContext context,
                     Expanded(child: Divider()),
                   ],
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 24),
-                  child: Text(
-                    "Sign up with Email",
-                    style: TextStyle(color: primaryColor),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUpPage()),
+                    );
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 24),
+                    child: Text(
+                      "Sign up with Email",
+                      style: TextStyle(color: primaryColor),
+                    ),
                   ),
                 ),
                 Row(

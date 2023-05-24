@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
+
 import '../../../core/colors.dart';
 import '../../../core/rive_utils.dart';
 import '../../../core/space.dart';
@@ -95,6 +96,7 @@ class _SignInFormState extends State<SignInForm> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return Stack(
       children: [
         Form(
@@ -184,11 +186,14 @@ class _SignInFormState extends State<SignInForm> {
                       ),
                     ),
                   ),
-                  icon: const Icon(
+                  icon: Icon(
                     CupertinoIcons.arrow_right,
                     color: blackBG,
                   ),
-                  label: const Text("Sign In"),
+                  label: Text("Sign In",
+                      style: screenWidth > 480
+                          ? headline2.copyWith(fontSize: 30)
+                          : headline2),
                 ),
               ),
             ],

@@ -1,10 +1,12 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eccat_car/core/text_style.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'dart:io';
-import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
 import '../core/colors.dart';
 import '../widget/text_fild.dart';
 import 'Security/Drivers.dart';
@@ -58,6 +60,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isLargeScreen = screenWidth > 480;
     return Scaffold(
       backgroundColor: blackBG,
       appBar: AppBar(
@@ -115,7 +119,9 @@ class _UserInfoPageState extends State<UserInfoPage> {
 
                 Text(
                   'Name:',
-                  style: headline2,
+                  style: isLargeScreen
+                      ? headline2.copyWith(fontSize: 30)
+                      : headline2,
                 ),
                 textField(
                   controller: _nameController,
@@ -124,7 +130,9 @@ class _UserInfoPageState extends State<UserInfoPage> {
                 const SizedBox(height: 10),
                 Text(
                   'Email:',
-                  style: headline2,
+                  style: isLargeScreen
+                      ? headline2.copyWith(fontSize: 30)
+                      : headline2,
                 ),
                 textField(
                   controller: _emailController,
@@ -133,7 +141,9 @@ class _UserInfoPageState extends State<UserInfoPage> {
                 const SizedBox(height: 10),
                 Text(
                   'Phone Number:',
-                  style: headline2,
+                  style: isLargeScreen
+                      ? headline2.copyWith(fontSize: 30)
+                      : headline2,
                 ),
                 textField(
                   controller: _phoneNumberController,
@@ -160,7 +170,9 @@ class _UserInfoPageState extends State<UserInfoPage> {
                 const SizedBox(height: 20),
                 Text(
                   'Add info about you',
-                  style: headline2,
+                  style: isLargeScreen
+                      ? headline2.copyWith(fontSize: 30)
+                      : headline2,
                 ),
                 const SizedBox(height: 8),
                 textField(

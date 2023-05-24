@@ -64,7 +64,7 @@ class _AuthPageState extends State<AuthPage> {
               context,
               MaterialPageRoute(
                   builder: (context) => const EntryCustomer(
-                        initialIndex: 1,
+                        initialIndex: 2,
                       )),
             );
           });

@@ -74,15 +74,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       children: [
                         const Spacer(),
                         SizedBox(
-                          width: screenWidth > 480 ? 320 : 260,
+                          width: screenWidth > 480 ? 500 : 260,
                           child: Column(
                             children: [
-                              SpaceVH(height: 250.0),
+                              SpaceVH(height: screenWidth > 480 ? 500 : 250.0),
                               Text(
                                 splashText,
                                 textAlign: TextAlign.left,
                                 style: screenWidth > 480
-                                    ? headline2.copyWith(fontSize: 32)
+                                    ? headline2.copyWith(fontSize: 40)
                                     : headline2,
                               ),
                             ],

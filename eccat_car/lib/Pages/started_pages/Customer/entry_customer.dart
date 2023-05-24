@@ -8,8 +8,9 @@ import 'package:rive/rive.dart';
 import '../../../core/colors.dart';
 import '../../../core/rive_utils.dart';
 import '../../../functions/alertexitapp.dart';
-import '../../AI/person_page.dart';
+import '../../../lists/search_customer.dart';
 import '../../Security/user/user_check.dart';
+import '../../User_Profile.dart';
 import '../../home/components/side_menu.dart';
 import '../../home/models/menu_btn.dart';
 import '../../Health Care/PassengerChoice.dart';
@@ -41,13 +42,18 @@ class _EntryCustomerState extends State<EntryCustomer>
   bool isSideMenuClosed = true;
   int currentpages = 0;
   final screens = [
+    customer_search(),
     PassengerChoice(),
     CustomerStartPage(),
     UserCheck(),
-    WebViewApp(),
+    UserInfoPage(),
   ];
 
   final items = <Widget>[
+    Icon(
+      Icons.search,
+      size: 30.h,
+    ),
     Icon(
       CupertinoIcons.heart_slash_circle_fill,
       size: 30.h,
@@ -61,7 +67,7 @@ class _EntryCustomerState extends State<EntryCustomer>
       size: 30.h,
     ),
     Icon(
-      Icons.web,
+      Icons.person,
       size: 30.h,
     ),
   ];

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
 import '../../core/colors.dart';
 import '../../core/space.dart';
 import '../../core/text_style.dart';
@@ -42,6 +43,8 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(top: 50.0),
@@ -51,21 +54,25 @@ class _SignUpPageState extends State<SignUpPage> {
             child: Column(
               children: [
                 //head of page
-                const SpaceVH(height: 30.0),
+                SpaceVH(height: screenWidth > 480 ? 60 : 30.0),
                 Text(
                   'Create new account',
-                  style: headline,
+                  style: screenWidth > 480
+                      ? headline.copyWith(fontSize: 60)
+                      : headline,
                 ),
 
                 //text hint
-                const SpaceVH(height: 10.0),
-                const Text(
+                SpaceVH(height: screenWidth > 480 ? 20 : 10.0),
+                Text(
                   'Please fill in the form to continue',
-                  style: headline4,
+                  style: screenWidth > 480
+                      ? headline4.copyWith(fontSize: 20)
+                      : headline4,
                 ),
 
                 //userName
-                const SpaceVH(height: 20.0),
+                SpaceVH(height: screenWidth > 480 ? 40 : 20.0),
                 textField(
                   onChanged: (data) {
                     Name = data;
@@ -81,7 +88,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     return null;
                   },
                 ),
-
+                SpaceVH(height: screenWidth > 480 ? 20 : 0.0),
                 //userEmail
                 textField(
                   onChanged: (data) {
@@ -93,7 +100,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   hintTxt: 'Email Address',
                   validator: InputValidator.emailValidator,
                 ),
-
+                SpaceVH(height: screenWidth > 480 ? 20 : 0.0),
                 //user Number
                 textField(
                   onChanged: (data) {
@@ -105,7 +112,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   hintTxt: 'Phone Number',
                   validator: InputValidator.phoneValidator,
                 ),
-
+                SpaceVH(height: screenWidth > 480 ? 20 : 0.0),
                 //user Password
                 textField(
                   onChanged: (data) {
@@ -127,7 +134,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   hintTxt: 'Password',
                   validator: InputValidator.passwordValidator,
                 ),
-
+                SpaceVH(height: screenWidth > 480 ? 20 : 0.0),
                 // user role
                 UserRoleDropdown(
                   hintTxt: 'Please select your role',
@@ -148,6 +155,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 // conditional text fields for driver ID and license number
                 if (selectedOption == 'Driver')
                   Column(children: [
+                    SpaceVH(height: screenWidth > 480 ? 20 : 0.0),
                     textField(
                       onChanged: (data) {
                         UserID = data; // save driver ID data
@@ -156,13 +164,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       prefixIcon: const Icon(Icons.credit_card_sharp),
                       keyboardType: TextInputType.number,
                       hintTxt: 'Driver ID',
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your driver ID';
-                        }
-                        return null;
-                      },
+                      validator: InputValidator.idValidator,
                     ),
+                    SpaceVH(height: screenWidth > 480 ? 20 : 0.0),
                     textField(
                       onChanged: (data) {
                         DriverLic = data; // save driver license data
@@ -171,17 +175,12 @@ class _SignUpPageState extends State<SignUpPage> {
                       prefixIcon: const Icon(Icons.credit_card),
                       keyboardType: TextInputType.number,
                       hintTxt: 'Driver License Number',
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your driver license number';
-                        }
-                        return null;
-                      },
+                      validator: InputValidator.licenseValidator,
                     ),
                   ]),
 
                 // sign up button
-                const SpaceVH(height: 20.0),
+                SpaceVH(height: screenWidth > 480 ? 40 : 20.0),
                 Mainbutton(
                   onTap: () {
                     if (formKey.currentState!.validate()) {
@@ -206,7 +205,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
 
                 //switch to Login
-                const SpaceVH(height: 10.0),
+                SpaceVH(height: screenWidth > 480 ? 30 : 10.0),
                 TextButton(
                   onPressed: () {
                     Navigator.push(
@@ -218,11 +217,16 @@ class _SignUpPageState extends State<SignUpPage> {
                     text: TextSpan(children: [
                       TextSpan(
                         text: 'Have an account? ',
-                        style: headline3,
+                        style: screenWidth > 480
+                            ? headline3.copyWith(fontSize: 18)
+                            : headline3,
                       ),
                       TextSpan(
                         text: ' Sign In',
-                        style: headline4.copyWith(color: primaryColor),
+                        style: screenWidth > 480
+                            ? headline4.copyWith(
+                                color: primaryColor, fontSize: 20)
+                            : headline4.copyWith(color: primaryColor),
                       ),
                     ]),
                   ),

@@ -2,6 +2,9 @@ import 'package:eccat_car/Pages/Health%20Care/darkmode.dart';
 import 'package:eccat_car/Pages/Iot/final_design.dart';
 import 'package:eccat_car/Pages/User_Profile.dart';
 import 'package:flutter/material.dart';
+
+import '../Pages/Health Care/Passenger1.dart';
+import '../Pages/Health Care/Passenger2.dart';
 import '../core/colors.dart';
 import '../core/text_style.dart';
 
@@ -15,9 +18,9 @@ class _DataSearchPageState extends State<DataSearchPage> {
     'Battery': IoTPage(),
     'Speed': IoTPage(),
     'Driver Health': HealthCareDriver(),
-    'Passenger1': HealthCareDriver(),
-    'Passenger 2': HealthCareDriver(),
-    'Email & password': UserInfoPage(),
+    'Passenger1': Passenger1(),
+    'Passenger 2': Passenger2(),
+    'User Info': UserInfoPage(),
   };
   List<String> data = [
     'Battery',
@@ -25,7 +28,7 @@ class _DataSearchPageState extends State<DataSearchPage> {
     'Driver Health',
     'Passenger1',
     'Passenger 2',
-    'Email & password'
+    'User Info'
   ];
   String _searchText = '';
 

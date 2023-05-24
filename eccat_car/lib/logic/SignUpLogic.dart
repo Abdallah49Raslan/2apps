@@ -44,7 +44,7 @@ class SignUpLogic extends StatelessWidget {
             );
           } else if (role == 'Customer') {
             return const EntryCustomer(
-              initialIndex: 1,
+              initialIndex: 2,
             );
           }
         } else if (snapshot.hasError) {

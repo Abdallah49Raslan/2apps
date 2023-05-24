@@ -64,7 +64,7 @@ class _Passenger1State extends State<Passenger1> {
         centerTitle: true,
         backgroundColor: backgroundColorDark,
         title: const Text(
-          "Healthcare",
+          "Healthcare Passenger1",
           style: headline1,
         ),
         iconTheme: IconThemeData(color: whiteText),

@@ -1,3 +1,4 @@
+import 'package:eccat_car/Pages/Health%20Care/Passenger2.dart';
 import 'package:eccat_car/Pages/User_Profile.dart';
 import 'package:flutter/material.dart';
 import '../Pages/Health Care/Passenger1.dart';
@@ -13,12 +14,14 @@ class _customer_searchState extends State<customer_search> {
   Map<String, Widget> dataPages = {
 
     'Passenger1': Passenger1(),
-    'Email & password': UserInfoPage(),
+    'Passenger2': Passenger2(),
+    'User Info': UserInfoPage(),
   };
   List<String> data = [
 
     'Passenger1',
-    'Email & password'
+    'Passenger2',
+    'User Info'
   ];
   String _searchText = '';
 

@@ -5,12 +5,12 @@ class InputValidator {
     if (value == null || value.isEmpty) {
       return 'Please enter your Email';
     }
-    if (!RegExp(r'^[\w-\.]+@gmail.com').hasMatch(value)) {
+    if (!RegExp(r'^[\w-\.]+@').hasMatch(value)) {
       return 'Please enter a valid email address';
     }
     // Perform DNS lookup to check if domain exists
     try {
-      final result =  InternetAddress.lookup(value.split('@')[1]);
+      final result = InternetAddress.lookup(value.split('@')[1]);
       if (result.then((res) => res.isEmpty) == true) {
         return 'Domain does not exist';
       }
@@ -39,4 +39,24 @@ class InputValidator {
     }
     return null;
   }
+  static String? idValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your ID';
+    }
+    if (!RegExp(r'^\d{14}$').hasMatch(value)) {
+      return 'ID must be 14 digits';
+    }
+    return null;
+  }
+
+  static String? licenseValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your license number';
+    }
+    if (!RegExp(r'^\d{14}$').hasMatch(value)) {
+      return 'License number must be 14 digits';
+    }
+    return null;
+  }
 }
+
