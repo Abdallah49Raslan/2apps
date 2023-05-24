@@ -1,109 +1,88 @@
+import 'package:eccat_car/core/text_style.dart';
 import 'package:flutter/material.dart';
+
 import '../core/colors.dart';
-import '../core/text_style.dart';
 
-class ChatbotPage extends StatefulWidget {
-  @override
-  _ChatbotPageState createState() => _ChatbotPageState();
-}
-
-class _ChatbotPageState extends State<ChatbotPage> {
-  TextEditingController _controller = TextEditingController();
-  List<Message> _messages = [
-    Message(text: 'Hello, how can I assist you?', isUser: false)
+class HelpPage extends StatelessWidget {
+  final List<Question> questions = [
+    Question('How do I create a new post?',
+        'To create a new post, click on the "Create Post" button on the home page.'),
+    Question('How can I change my profile picture?',
+        'To change your profile picture, go to your profile page and click on the "Edit Profile" button.'),
+    Question('How do I add a friend?',
+        'To add a friend, go to their profile page and click on the "Add Friend" button.'),
+    // Add more questions and answers here
   ];
-
-  Map<String, String> _answers = {
-    'hi': 'Hi there!',
-    'how are you': 'I\'m doing fine, thank you for asking.',
-    'what is your name': 'My name is Chatbot.',
-    'bye': 'Goodbye, have a nice day!',
-  };
-
-  void _handleSubmitted(String message) {
-    _controller.clear();
-    setState(() {
-      _messages.insert(0, Message(text: message, isUser: true));
-      String response =
-          _answers[message.toLowerCase()] ?? 'Sorry, I don\'t understand.';
-      _messages.insert(0, Message(text: response, isUser: false));
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: blackBG,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: backgroundColorDark,
-        title: const Text(
-          "Help",
-          style: headline1,
+    return MaterialApp(
+      title: 'Help Page',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      debugShowCheckedModeBanner: false, // Remove debug banner
+      home: Scaffold(
+        backgroundColor: blackBG,
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: backgroundColorDark,
+          title: const Text(
+            "Help",
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+              color: whiteText,
+            ),
+          ),
+        ),
+        body: ListView.builder(
+          itemCount: questions.length,
+          itemBuilder: (context, index) {
+            return Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              margin: EdgeInsets.all(10.0),
+              child: ListTile(
+                title: Text(
+                  questions[index].question,
+                  style: headline2,
+                ),
+                onTap: () {
+                  _showAnswer(context, questions[index]);
+                },
+              ),
+            );
+          },
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: ListView.builder(
-              reverse: true,
-              itemCount: _messages.length,
-              itemBuilder: (_, index) => _buildMessage(_messages[index]),
-            ),
-          ),
-          Divider(),
-          Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).cardColor,
-            ),
-            child: _buildTextField(),
-          ),
-        ],
-      ),
     );
   }
 
-  Widget _buildMessage(Message message) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-      child: Row(
-        mainAxisAlignment:
-            message.isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-            decoration: BoxDecoration(
-              color: message.isUser ? Colors.blueAccent : Colors.grey[200],
-              borderRadius: BorderRadius.circular(20),
+  void _showAnswer(BuildContext context, Question question) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(question.question),
+          content: Text(question.answer),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Close'),
             ),
-            child: Text(
-              message.text,
-              style: TextStyle(
-                color: message.isUser ? Colors.white : Colors.black,
-                fontSize: 16,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildTextField() {
-    return TextField(
-      controller: _controller,
-      decoration: InputDecoration(
-        hintText: 'Type your message...',
-        contentPadding: EdgeInsets.all(10),
-      ),
-      onSubmitted: _handleSubmitted,
+          ],
+        );
+      },
     );
   }
 }
 
-class Message {
-  final String text;
-  final bool isUser;
+class Question {
+  final String question;
+  final String answer;
 
-  Message({required this.text, required this.isUser});
+  Question(this.question, this.answer);
 }

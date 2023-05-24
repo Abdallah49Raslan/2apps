@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/colors.dart';
+
 class Captures extends StatefulWidget {
   const Captures({Key? key}) : super(key: key);
 
@@ -41,25 +43,45 @@ class _CapturesState extends State<Captures> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: blackBG,
       appBar: AppBar(
-        title: const Text('Captures'),
+        centerTitle: true,
+        backgroundColor: backgroundColorDark,
+        title: const Text(
+          "Captures",
+          style: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: whiteText,
+          ),
+        ),
       ),
-      body: ListView.builder(
-        itemCount: imageUrls.length,
-        itemBuilder: (context, index) {
-          final imageUrl = imageUrls[index];
-          return Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black,
-                width: 2.0,
-              ),
-            ),
-            child: Image.network(
-              imageUrl,
-              fit: BoxFit.cover,
-            ),
-          );
+      body: FutureBuilder(
+        future: Future.delayed(Duration(seconds: 5)), // Wait for 5 seconds
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            return imageUrls.isEmpty
+                ? Center(
+                    child: Text(
+                        "No images available"), // Show a message if no images are available
+                  )
+                : Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 2.0,
+                      ),
+                    ),
+                    child: Image.network(
+                      imageUrls[0], // Display the first image URL in the list
+                      fit: BoxFit.cover,
+                    ),
+                  );
+          }
         },
       ),
     );

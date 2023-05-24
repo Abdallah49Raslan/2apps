@@ -40,7 +40,7 @@ List<RiveAsset> sideMenus = [
       // Navigate to the Help screen
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ChatbotPage()),
+        MaterialPageRoute(builder: (context) => HelpPage()),
       );
     },
   ),

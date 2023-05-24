@@ -1,6 +1,5 @@
 import 'package:eccat_car/core/colors.dart';
 import 'package:flutter/cupertino.dart';
-
 import 'package:rive/rive.dart';
 
 import '../../../core/text_style.dart';
@@ -20,8 +19,7 @@ class AnimatedBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    if (screenWidth > 480) {
-    }
+    if (screenWidth > 480) {}
     return GestureDetector(
       onTap: press,
       child: SizedBox(
@@ -42,7 +40,10 @@ class AnimatedBtn extends StatelessWidget {
                   Icon(CupertinoIcons.arrow_right),
                   SizedBox(width: 8),
                   Text("Start The Car App",
-                      style: headline2.copyWith(color: primaryColor)),
+                      style: screenWidth > 480
+                          ? headline2.copyWith(
+                              color: primaryColor, fontSize: 30)
+                          : headline2.copyWith(color: primaryColor)),
                 ],
               ),
             )

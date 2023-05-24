@@ -61,8 +61,6 @@ class _FaceRecoState extends State<FaceReco> {
               finger = '$fingerprint';
             });
           }
-          ;
-
           if (unwelcomeFlag != null && unwelcomeFlag!.isNotEmpty) {
             SecuritySound();
             AwesomeNotifications().createNotification(
@@ -89,7 +87,7 @@ class _FaceRecoState extends State<FaceReco> {
                 id: 32,
                 channelKey: "schedule",
                 title: "Welcome",
-                body: "$welcomeName",
+                body: "$welcomeFlagValue",
                 notificationLayout: NotificationLayout.BigPicture,
                 wakeUpScreen: true,
                 locked: true,

@@ -1,8 +1,9 @@
 import 'dart:ui';
+
 import 'package:eccat_car/core/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
+
 import '../../core/space.dart';
 import '../../core/text_style.dart';
 import '../../data/demo.dart';
@@ -52,8 +53,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             // Before that
             top: isSignInDialogShown ? -50 : 0,
             duration: const Duration(milliseconds: 240),
-            height:screenHeight,
-            width:screenWidth ,
+            height: screenHeight,
+            width: screenWidth,
             child: SafeArea(
               child: Stack(
                 children: [
@@ -73,14 +74,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       children: [
                         const Spacer(),
                         SizedBox(
-                          width: 260,
+                          width: screenWidth > 480 ? 320 : 260,
                           child: Column(
-                            children: const [
+                            children: [
                               SpaceVH(height: 250.0),
                               Text(
                                 splashText,
                                 textAlign: TextAlign.left,
-                                style: headline2,
+                                style: screenWidth > 480
+                                    ? headline2.copyWith(fontSize: 32)
+                                    : headline2,
                               ),
                             ],
                           ),
