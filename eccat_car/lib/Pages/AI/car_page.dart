@@ -211,22 +211,15 @@ class _Car_pageState extends State<Car_page> {
                       });
                       return Container(
                         alignment: Alignment.topRight,
-                        child: Positioned(
-                            left: MediaQuery.of(context).size.width / 3,
-                            bottom: MediaQuery.of(context).size.height / 3.h,
-                            // right: MediaQuery.of(context).size.width / 3,
-                            // bottom: MediaQuery.of(context).size.height / 3.h,
-                            height: 300.h,
-                            width: 200.h,
-                            child: Padding(
-                              padding: EdgeInsets.all(8),
-                              child: SvgPicture.asset(
-                                'assets/icons/Car.svg',
-                                color: Colors.red,
-                                height: 400.h,
-                                width: double.infinity,
-                              ),
-                            )),
+                        child: Padding(
+                          padding: EdgeInsets.all(8),
+                          child: SvgPicture.asset(
+                            'assets/icons/Car.svg',
+                            color: Colors.red,
+                            height: 400.h,
+                            width: double.infinity,
+                          ),
+                        ),
                       );
                     });
                   },
@@ -282,20 +275,15 @@ class _Car_pageState extends State<Car_page> {
                       });
                       return Container(
                         alignment: Alignment.topLeft,
-                        child: Positioned(
-                            right: MediaQuery.of(context).size.width / 3,
-                            bottom: MediaQuery.of(context).size.height / 3.h,
-                            height: 300.h,
-                            width: 200.h,
-                            child: Padding(
-                              padding: EdgeInsets.all(8),
-                              child: SvgPicture.asset(
-                                'assets/icons/Car.svg',
-                                color: Colors.red,
-                                height: 400.h,
-                                width: double.infinity,
-                              ),
-                            )),
+                        child: Padding(
+                          padding: EdgeInsets.all(8),
+                          child: SvgPicture.asset(
+                            'assets/icons/Car.svg',
+                            color: Colors.red,
+                            height: 400.h,
+                            width: double.infinity,
+                          ),
+                        ),
                       );
                     });
                   },
@@ -318,20 +306,15 @@ class _Car_pageState extends State<Car_page> {
                 ),
 
                 Center(
-                  child: Positioned(
-                      left: MediaQuery.of(context).size.width / 2.4,
-                      top: MediaQuery.of(context).size.height / 30,
+                  child: Padding(
+                    padding: EdgeInsets.all(8),
+                    child: SvgPicture.asset(
+                      'assets/icons/Car.svg',
                       height: 500.h,
-                      width: 200.h,
-                      child: Padding(
-                        padding: EdgeInsets.all(8),
-                        child: SvgPicture.asset(
-                          'assets/icons/Car.svg',
-                          height: 500.h,
-                          width: double.infinity,
-                          color: Color.fromARGB(255, 5, 214, 193),
-                        ),
-                      )),
+                      width: double.infinity,
+                      color: Color.fromARGB(255, 5, 214, 193),
+                    ),
+                  ),
                 ),
 
                 // Test Car left
