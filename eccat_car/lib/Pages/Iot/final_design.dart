@@ -46,7 +46,7 @@ class _IoTPageState extends State<IoTPage> {
         ),
       ),
       body: Container(
-        width: 600,
+        width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(

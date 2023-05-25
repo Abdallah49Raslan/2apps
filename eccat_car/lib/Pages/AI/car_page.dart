@@ -1,12 +1,16 @@
 // ignore_for_file: prefer_const_constructors, deprecated_member_use, camel_case_types, prefer_final_fields, unused_field, avoid_single_cascade_in_expression_statements
+
 import 'dart:async';
-import 'package:eccat_car/Pages/AI/controller/controller.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get/instance_manager.dart';
+import '../../controller/controller.dart';
 import '../started_pages/Driver/entry_Driver.dart';
 
 class Car_page extends StatefulWidget {
@@ -28,6 +32,7 @@ class _Car_pageState extends State<Car_page> {
 
   bool leftside = false;
   bool rightside = false;
+  bool bump = false;
   final _controller = Get.find<controller>();
 
   @override
@@ -46,6 +51,11 @@ class _Car_pageState extends State<Car_page> {
                   itemBuilder: (BuildContext context, DataSnapshot snapshot,
                       Animation<double> animation, int index) {
                     if (snapshot.child('action1').value == '222') {
+                      Timer(Duration(milliseconds: 300), () {
+                        Get.offAll(EntryDriver(
+                          initialIndex: 0,
+                        ));
+                      });
                       _controller.sendNotification();
                     }
 
@@ -55,98 +65,100 @@ class _Car_pageState extends State<Car_page> {
                           initialIndex: 0,
                         ));
                       });
-                      return Padding(
-                        padding: EdgeInsets.all(5),
-                        child: Center(
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ElevatedButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                              Colors.amber),
-                                      shape: MaterialStateProperty.all(
-                                          RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(70))),
-                                    ),
-                                    onPressed: () {},
-                                    child: null,
-                                  ),
-                                  ElevatedButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                              Colors.amber),
-                                      shape: MaterialStateProperty.all(
-                                          RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(70))),
-                                    ),
-                                    onPressed: () {},
-                                    child: null,
-                                  ),
-                                  ElevatedButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                              Colors.amber),
-                                      shape: MaterialStateProperty.all(
-                                          RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(70))),
-                                    ),
-                                    onPressed: () {},
-                                    child: null,
-                                  ),
-                                  ElevatedButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                              Colors.amber),
-                                      shape: MaterialStateProperty.all(
-                                          RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(70))),
-                                    ),
-                                    onPressed: () {},
-                                    child: null,
-                                  ),
-                                  ElevatedButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                              Colors.amber),
-                                      shape: MaterialStateProperty.all(
-                                          RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(70))),
-                                    ),
-                                    onPressed: () {},
-                                    child: null,
-                                  ),
-                                ],
-                              )
-                            ],
+                      return
+                          // Padding(
+                          //   padding: EdgeInsets.all(5),
+                          //   child: Center(
+                          //     child: Column(
+                          //       children: [
+                          //         Row(
+                          //           mainAxisAlignment:
+                          //               MainAxisAlignment.spaceBetween,
+                          //           children: [
+                          //             ElevatedButton(
+                          //               style: ButtonStyle(
+                          //                 backgroundColor:
+                          //                     MaterialStateProperty.all(
+                          //                         Colors.amber),
+                          //                 shape: MaterialStateProperty.all(
+                          //                     RoundedRectangleBorder(
+                          //                         borderRadius:
+                          //                             BorderRadius.circular(70))),
+                          //               ),
+                          //               onPressed: () {},
+                          //               child: null,
+                          //             ),
+                          //             ElevatedButton(
+                          //               style: ButtonStyle(
+                          //                 backgroundColor:
+                          //                     MaterialStateProperty.all(
+                          //                         Colors.amber),
+                          //                 shape: MaterialStateProperty.all(
+                          //                     RoundedRectangleBorder(
+                          //                         borderRadius:
+                          //                             BorderRadius.circular(70))),
+                          //               ),
+                          //               onPressed: () {},
+                          //               child: null,
+                          //             ),
+                          //             ElevatedButton(
+                          //               style: ButtonStyle(
+                          //                 backgroundColor:
+                          //                     MaterialStateProperty.all(
+                          //                         Colors.amber),
+                          //                 shape: MaterialStateProperty.all(
+                          //                     RoundedRectangleBorder(
+                          //                         borderRadius:
+                          //                             BorderRadius.circular(70))),
+                          //               ),
+                          //               onPressed: () {},
+                          //               child: null,
+                          //             ),
+                          //             ElevatedButton(
+                          //               style: ButtonStyle(
+                          //                 backgroundColor:
+                          //                     MaterialStateProperty.all(
+                          //                         Colors.amber),
+                          //                 shape: MaterialStateProperty.all(
+                          //                     RoundedRectangleBorder(
+                          //                         borderRadius:
+                          //                             BorderRadius.circular(70))),
+                          //               ),
+                          //               onPressed: () {},
+                          //               child: null,
+                          //             ),
+                          //             ElevatedButton(
+                          //               style: ButtonStyle(
+                          //                 backgroundColor:
+                          //                     MaterialStateProperty.all(
+                          //                         Colors.amber),
+                          //                 shape: MaterialStateProperty.all(
+                          //                     RoundedRectangleBorder(
+                          //                         borderRadius:
+                          //                             BorderRadius.circular(70))),
+                          //               ),
+                          //               onPressed: () {},
+                          //               child: null,
+                          //             ),
+                          //           ],
+                          //         )
+                          //       ],
+                          //     ),
+                          //   ),
+                          // );
+                          Container(
+                        width: double.maxFinite,
+                        margin: EdgeInsets.only(
+                          top: 5,
+                        ),
+                        child: SafeArea(
+                          child: SvgPicture.asset(
+                            'assets/icons/bump1.svg',
+                            color: Colors.amber,
+                            width: 100.w,
                           ),
                         ),
                       );
-                      // Container(width: double.maxFinite,
-                      //   margin: EdgeInsets.only(
-                      //     top: 0,
-                      //   ),
-                      //   child: SafeArea(
-                      //     child: SvgPicture.asset(
-                      //       'assets/icons/bump1.svg',
-                      //       color: Colors.amber,
-                      //       width: 100.w,
-                      //     ),
-                      //   ),
-                      // );
                     });
                   },
                 ),
@@ -155,7 +167,7 @@ class _Car_pageState extends State<Car_page> {
                   query: dpRef.limitToFirst(1),
                   itemBuilder: (BuildContext context, DataSnapshot snapshot,
                       Animation<double> animation, int index) {
-                    Timer(Duration(seconds: 7), () {
+                    Timer(Duration(seconds: 2), () {
                       if (snapshot.child('action1').value == '222') {
                         reference.remove();
                       }
@@ -171,74 +183,16 @@ class _Car_pageState extends State<Car_page> {
 
                 // LeftLane
                 FirebaseAnimatedList(
-                  query: LeftLane.limitToFirst(2),
-                  itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                      Animation<double> animation, int index) {
-                    if (snapshot.child('LeftAction').value == '444') {
-                      _controller.rightNotification();
-                    }
-
-                    return Builder(builder: (context) {
-                      // AwesomeDialog(
-                      //   context: context,
-                      //   dialogType: DialogType.error,
-                      //   animType: AnimType.rightSlide,
-                      //   title: 'Warning',
-                      //   desc: 'Turn a little to the left',
-                      //   showCloseIcon: true,
-                      //   btnCancelOnPress: () {},
-                      //   btnOkOnPress: () {},
-                      // )..show();
-
-                      Timer(Duration(seconds: 7), () {
-                        Get.offAll(EntryDriver(
-                          initialIndex: 0,
-                        ));
-                      });
-                      return Container(
-                        alignment: Alignment.topRight,
-                        child: Positioned(
-                            right: MediaQuery.of(context).size.width / 3,
-                            bottom: MediaQuery.of(context).size.height / 3.h,
-                            height: 300.h,
-                            width: 200.h,
-                            child: Padding(
-                              padding: EdgeInsets.all(8),
-                              child: SvgPicture.asset(
-                                'assets/icons/Car.svg',
-                                color: Colors.red,
-                                height: 400.h,
-                                width: double.infinity,
-                              ),
-                            ),
-                            ),
-                      );
-                    });
-                  },
-                ),
-
-                FirebaseAnimatedList(
                   query: LeftLane.limitToFirst(1),
                   itemBuilder: (BuildContext context, DataSnapshot snapshot,
                       Animation<double> animation, int index) {
-                    Timer(Duration(seconds: 7), () {
-                      if (snapshot.child('LeftAction').value == '444') {
-                        Left.remove();
-                      }
-                    });
-
-                    return Container();
-
-                    // return listItem(Lane: Lane);
-                  },
-                ),
-
-                //RightLane
-                FirebaseAnimatedList(
-                  query: RightLane.limitToFirst(2),
-                  itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                      Animation<double> animation, int index) {
-                    if (snapshot.child('RightAction').value == '333') {
+                    if (snapshot.child('LeftAction').value == '444') {
+                      // Timer(Duration(milliseconds: 300), () {
+                      //   Get.offAll(homescren(
+                      //     initialIndex: 1,
+                      //   ));
+                      // });
+                      // _controller.rightNotification();
                       _controller.setNotification();
                     }
 
@@ -254,7 +208,78 @@ class _Car_pageState extends State<Car_page> {
                       //   btnOkOnPress: () {},
                       // )..show();
 
-                      Timer(Duration(seconds: 7), () {
+                      Timer(Duration(seconds: 4), () {
+                        Get.offAll(EntryDriver(
+                          initialIndex: 0,
+                        ));
+                      });
+                      return Container(
+                        alignment: Alignment.topRight,
+                        child: Positioned(
+                            left: MediaQuery.of(context).size.width / 3,
+                            bottom: MediaQuery.of(context).size.height / 3.h,
+                            // right: MediaQuery.of(context).size.width / 3,
+                            // bottom: MediaQuery.of(context).size.height / 3.h,
+                            height: 300.h,
+                            width: 200.h,
+                            child: Padding(
+                              padding: EdgeInsets.all(8),
+                              child: SvgPicture.asset(
+                                'assets/icons/Car.svg',
+                                color: Colors.red,
+                                height: 400.h,
+                                width: double.infinity,
+                              ),
+                            )),
+                      );
+                    });
+                  },
+                ),
+
+                FirebaseAnimatedList(
+                  query: LeftLane.limitToFirst(1),
+                  itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                      Animation<double> animation, int index) {
+                    Timer(Duration(seconds: 2), () {
+                      if (snapshot.child('LeftAction').value == '444') {
+                        Left.remove();
+                      }
+                    });
+
+                    return Container();
+
+                    // return listItem(Lane: Lane);
+                  },
+                ),
+
+                //RightLane
+                FirebaseAnimatedList(
+                  query: RightLane.limitToFirst(1),
+                  itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                      Animation<double> animation, int index) {
+                    if (snapshot.child('RightAction').value == '333') {
+                      // Timer(Duration(milliseconds: 300), () {
+                      //   Get.offAll(homescren(
+                      //     initialIndex: 1,
+                      //   ));
+                      // });
+                      // _controller.setNotification();
+                      _controller.rightNotification();
+                    }
+
+                    return Builder(builder: (context) {
+                      // AwesomeDialog(
+                      //   context: context,
+                      //   dialogType: DialogType.error,
+                      //   animType: AnimType.rightSlide,
+                      //   title: 'Warning',
+                      //   desc: 'Turn a little to the left',
+                      //   showCloseIcon: true,
+                      //   btnCancelOnPress: () {},
+                      //   btnOkOnPress: () {},
+                      // )..show();
+
+                      Timer(Duration(seconds: 2), () {
                         Get.offAll(EntryDriver(
                           initialIndex: 0,
                         ));
@@ -262,7 +287,7 @@ class _Car_pageState extends State<Car_page> {
                       return Container(
                         alignment: Alignment.topLeft,
                         child: Positioned(
-                            left: MediaQuery.of(context).size.width / 3,
+                            right: MediaQuery.of(context).size.width / 3,
                             bottom: MediaQuery.of(context).size.height / 3.h,
                             height: 300.h,
                             width: 200.h,
@@ -270,8 +295,7 @@ class _Car_pageState extends State<Car_page> {
                               padding: EdgeInsets.all(8),
                               child: SvgPicture.asset(
                                 'assets/icons/Car.svg',
-                                color:
-                                    leftside ? Colors.red : Colors.transparent,
+                                color: Colors.red,
                                 height: 400.h,
                                 width: double.infinity,
                               ),
@@ -285,7 +309,7 @@ class _Car_pageState extends State<Car_page> {
                   query: RightLane.limitToFirst(1),
                   itemBuilder: (BuildContext context, DataSnapshot snapshot,
                       Animation<double> animation, int index) {
-                    Timer(Duration(seconds: 7), () {
+                    Timer(Duration(seconds: 2), () {
                       if (snapshot.child('RightAction').value == '333') {
                         Right.remove();
                       }
@@ -315,42 +339,67 @@ class _Car_pageState extends State<Car_page> {
                 ),
 
                 // Test Car left
-                Container(
-                  alignment: Alignment.topLeft,
-                  child: Positioned(
-                      left: MediaQuery.of(context).size.width / 3,
-                      bottom: MediaQuery.of(context).size.height / 3.h,
-                      height: 300.h,
-                      width: 200.h,
-                      child: Padding(
-                        padding: EdgeInsets.all(8),
-                        child: SvgPicture.asset(
-                          'assets/icons/Car.svg',
-                          color: leftside ? Colors.red : Colors.transparent,
-                          height: 400.h,
-                          width: double.infinity,
-                        ),
-                      )),
-                ),
+
+                // Container(
+                //   alignment: Alignment.topLeft,
+                //   child: Positioned(
+                //       left: MediaQuery.of(context).size.width / 3,
+                //       bottom: MediaQuery.of(context).size.height / 3.h,
+                //       height: 300.h,
+                //       width: 200.h,
+                //       child: Padding(
+                //         padding: EdgeInsets.all(8),
+                //         child: SvgPicture.asset(
+                //           'assets/icons/Car.svg',
+                //           color: leftside ? Colors.red : Colors.transparent,
+                //           height: 400.h,
+                //           width: double.infinity,
+                //         ),
+                //       )),
+                // ),
 
                 //Test car Right
-                Container(
-                  alignment: Alignment.topRight,
-                  child: Positioned(
-                      right: MediaQuery.of(context).size.width / 3,
-                      bottom: MediaQuery.of(context).size.height / 3.h,
-                      height: 300.h,
-                      width: 200.h,
-                      child: Padding(
-                        padding: EdgeInsets.all(8),
-                        child: SvgPicture.asset(
-                          'assets/icons/Car.svg',
-                          color: rightside ? Colors.red : Colors.transparent,
-                          height: 400.h,
-                          width: double.infinity,
-                        ),
-                      )),
-                ),
+
+                // Container(
+                //   alignment: Alignment.topRight,
+                //   child: Positioned(
+                //       right: MediaQuery.of(context).size.width / 3,
+                //       bottom: MediaQuery.of(context).size.height / 3.h,
+                //       height: 300.h,
+                //       width: 200.h,
+                //       child: Padding(
+                //         padding: EdgeInsets.all(8),
+                //         child: SvgPicture.asset(
+                //           'assets/icons/Car.svg',
+                //           color: rightside ? Colors.red : Colors.transparent,
+                //           height: 400.h,
+                //           width: double.infinity,
+                //         ),
+                //       )),
+                // ),
+
+                // test For bump
+
+                // Container(
+                //   margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                //   alignment: Alignment.topRight,
+                //   child: Positioned(
+                //       right: MediaQuery.of(context).size.width / 3,
+                //       bottom: MediaQuery.of(context).size.height / 3.h,
+                //       height: 200.h,
+                //       width: 200.h,
+                //       child: Row(
+                //         mainAxisAlignment: MainAxisAlignment.center,
+                //         children: [
+                //           SvgPicture.asset(
+                //             'assets/icons/bump1.svg',
+                //             color: bump ? Colors.yellow : Colors.transparent,
+                //             height: 200.h,
+                //             width: double.infinity,
+                //           ),
+                //         ],
+                //       )),
+                // ),
 
                 // Right Lane up
                 Positioned(
@@ -415,6 +464,7 @@ class _Car_pageState extends State<Car_page> {
                         width: double.infinity,
                       ),
                     )),
+
                 // Center(
                 //   child: Column(
                 //     children: [
@@ -424,9 +474,21 @@ class _Car_pageState extends State<Car_page> {
                 //           ElevatedButton(
                 //             onPressed: () {
                 //               setState(() {
+                //                 // Timer(Duration(milliseconds: 300), () {
+                //                 //   Get.offAll(homescren(
+                //                 //     initialIndex: 1,
+                //                 //   ));
+                //                 // });
+
                 //                 leftside = !leftside;
-                //                 _controller.setNotification();
-                //                 // Timer(Duration(seconds: 5), () {});
+                //                 _controller.rightNotification();
+                //                 //  _controller.sendNotification();
+                //                 // _controller.setNotification();
+                //                 Timer(Duration(seconds: 2), () {
+                //                   Get.offAll(homescren(
+                //                     initialIndex: 1,
+                //                   ));
+                //                 });
                 //               });
                 //             },
                 //             child: Icon(
@@ -436,16 +498,38 @@ class _Car_pageState extends State<Car_page> {
                 //           ),
                 //           ElevatedButton(
                 //             onPressed: () {
-                //               _controller.sendNotification();
                 //               setState(() {
-                //                 rightside = !rightside;
+                //                 // Timer(Duration(milliseconds: 300), () {
+                //                 //   Get.offAll(homescren(
+                //                 //     initialIndex: 1,
+                //                 //   ));
+                //                 // });
+
+                //                 // _controller.sendNotification();
+                //                 // _controller.sendNotification();
+                //                 Timer(Duration(seconds: 2), () {
+                //                   Get.offAll(homescren(
+                //                     initialIndex: 1,
+                //                   ));
+                //                 });
+                //                 bump = !bump;
                 //               });
                 //             },
-                //             child: Text('Ai'),
+                //             child: Text('AI'),
                 //           ),
                 //           ElevatedButton(
                 //             onPressed: () {
-                //               _controller.rightNotification();
+                //               // Timer(Duration(milliseconds: 300), () {
+                //               //   Get.offAll(homescren(
+                //               //     initialIndex: 1,
+                //               //   ));
+                //               // });
+                //               _controller.setNotification();
+                //               Timer(Duration(seconds: 2), () {
+                //                 Get.offAll(homescren(
+                //                   initialIndex: 1,
+                //                 ));
+                //               });
                 //               setState(() {
                 //                 rightside = !rightside;
                 //               });

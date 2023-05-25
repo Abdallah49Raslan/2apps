@@ -36,7 +36,7 @@ Widget SpeedGrid() {
 
                     var c = double.parse(num);
 
-                    if (c >= 0.5) {
+                    if (c >= 35) {
                       AwesomeNotifications().createNotification(
                           content: NotificationContent(
                         id: 51,

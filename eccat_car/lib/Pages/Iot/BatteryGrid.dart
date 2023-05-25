@@ -27,7 +27,7 @@ Widget BatteryGrid() {
                   double p = 0.5;
                   b = snapshot.data?.snapshot.value;
                   var B = double.parse(b);
-                  if (B < 20) {
+                  if (B <= 25) {
                     p = B / 100;
                     AwesomeNotifications().createNotification(
                       content: NotificationContent(
@@ -56,9 +56,9 @@ Widget BatteryGrid() {
                             color: Colors.white),
                       ),
                       circularStrokeCap: CircularStrokeCap.round,
-                      progressColor: Colors.green,
+                      progressColor: Colors.red,
                     );
-                  } else if (B <= 20) {
+                  } else if (B > 25) {
                     p = B / 100;
                     return new CircularPercentIndicator(
                       animationDuration: 4500,
@@ -70,9 +70,9 @@ Widget BatteryGrid() {
                           style: new TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 40.0,
-                              color: Colors.red)),
+                              color: Colors.white)),
                       circularStrokeCap: CircularStrokeCap.round,
-                      progressColor: Colors.red,
+                      progressColor: Colors.green,
                     );
                   }
                 }
