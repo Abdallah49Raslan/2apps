@@ -119,7 +119,7 @@ Widget SpeedGrid() {
                           pointers: <GaugePointer>[
                             NeedlePointer(
                               needleColor: Colors.orange,
-                              value: num,
+                              value: c,
                               enableAnimation: true,
                             ),
                             //
