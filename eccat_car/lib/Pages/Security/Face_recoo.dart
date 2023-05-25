@@ -68,9 +68,8 @@ class _FaceRecoState extends State<FaceReco> {
                 id: 31,
                 channelKey: "schedule",
                 title: "Warning",
-                body: "Driver is unauthorized",
-                bigPicture:
-                    "asset://assets/icons/Attention-sign-icon.png", // warning icon
+                body: "Unauthorized Access",
+                bigPicture: "asset://assets/icons/warning.png", // warning icon
                 notificationLayout: NotificationLayout.BigPicture,
                 largeIcon: "asset://assets/icons/Attention-sign-icon.png",
                 wakeUpScreen: true,
@@ -86,7 +85,7 @@ class _FaceRecoState extends State<FaceReco> {
               content: NotificationContent(
                 id: 32,
                 channelKey: "schedule",
-                title: "Welcome",
+                title: "Face Detected",
                 body: "$welcomeFlagValue",
                 notificationLayout: NotificationLayout.BigPicture,
                 wakeUpScreen: true,

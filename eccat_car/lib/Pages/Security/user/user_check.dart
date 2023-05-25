@@ -5,6 +5,7 @@ import 'package:eccat_car/core/colors.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import '../../../core/text_style.dart';
+import 'package:eccat_car/Pages/Security/user/DiverHealthInfo.dart';
 
 class UserCheck extends StatefulWidget {
   @override
@@ -135,6 +136,10 @@ class _UserCheckState extends State<UserCheck> {
                       ],
                     ),
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Driverinfo(),
                 ],
               ),
             ),
