@@ -25,7 +25,7 @@ class Mainbutton extends StatelessWidget {
         final screenWidth = constraints.maxWidth;
         final isLargeScreen = screenWidth > 480;
 
-        final double buttonHeight = isLargeScreen ? 80.0 : 50.0;
+        final double buttonHeight = isLargeScreen ? 70.0 : 50.0;
 
         return GestureDetector(
           onTap: onTap,

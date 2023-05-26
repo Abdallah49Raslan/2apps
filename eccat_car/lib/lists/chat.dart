@@ -1,17 +1,14 @@
 import 'package:eccat_car/core/text_style.dart';
 import 'package:flutter/material.dart';
-
+import 'package:url_launcher/url_launcher.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../core/colors.dart';
 
 class HelpPage extends StatelessWidget {
   final List<Question> questions = [
-    Question('How do I create a new post?',
-        'To create a new post, click on the "Create Post" button on the home page.'),
-    Question('How can I change my profile picture?',
-        'To change your profile picture, go to your profile page and click on the "Edit Profile" button.'),
-    Question('How do I add a friend?',
-        'To add a friend, go to their profile page and click on the "Add Friend" button.'),
-    // Add more questions and answers here
+    Question('what kind of apps is this application?',
+        'It is a driver assistant and car management app that allows you to keep track of basically everything.'),
+    // Rest of the questions and answers
   ];
 
   @override
@@ -55,6 +52,25 @@ class HelpPage extends StatelessWidget {
             );
           },
         ),
+        bottomNavigationBar: BottomAppBar(
+          child: Container(
+            height: 50.0,
+            child: InkWell(
+              onTap: () {
+                _sendEmail(context);
+              },
+              child: Center(
+                child: Text(
+                  'Contact Us',
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -77,6 +93,40 @@ class HelpPage extends StatelessWidget {
         );
       },
     );
+  }
+
+  void _sendEmail(BuildContext context) async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+
+    if (user != null) {
+      final String userEmail = user.email ?? ''; // Fetch the user's email from Firebase
+
+      final Uri emailLaunchUri = Uri(
+        scheme: 'mailto',
+        path: 'eccat421@gmail.com',
+        queryParameters: {
+          'subject': 'Help Request',
+          'from': userEmail,
+        },
+      );
+
+      if (await canLaunch(emailLaunchUri.toString())) {
+        await launch(emailLaunchUri.toString());
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('No email app found.'),
+          ),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('User is not logged in.'),
+        ),
+      );
+    }
   }
 }
 
