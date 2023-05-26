@@ -1,7 +1,9 @@
 import 'package:eccat_car/Pages/AI/WebPage.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
+
 import '../../../lists/chat.dart';
+import '../../../lists/contact_us.dart';
 import '../../AI/AboutApp.dart';
 
 class RiveAsset {
@@ -64,6 +66,18 @@ List<RiveAsset> sideMenus = [
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => AboutAPP()),
+      );
+    },
+  ),
+  RiveAsset(
+    "assets/RiveAssets/icons.riv",
+    artboard: "USER",
+    stateMachineName: "USER_Interactivity",
+    title: "Contact Us",
+    onTap: (BuildContext context) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ContactUsPage()),
       );
     },
   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../core/colors.dart';
 import '../core/text_style.dart';
 
@@ -62,7 +63,7 @@ class _HealthInfoState extends State<HealthInfo> {
                   Padding(
                     padding: const EdgeInsets.only(right: 15, left: 15),
                     child: Text(
-                      'Health tracking for Driver and each passenger in the car to keep track of:\n-Heart rate\n-Temperature\n-Oximeter\n-Alcohol detection\n\nDisplay these vital values on application.\n\nGiving alert if any value is abnormal.',
+                      'Health tracking for Driver and each passenger in the car to keep track of:\n-Heart rate         (60 : 100)Normal \n-Temperature    (36 : 37.2)Normal\n-Oximeter           (90 : 100)Normal \n-Alcohol detection\n\nDisplay these vital values on application.\n\nGiving alert if any value is abnormal.',
                       style: TextStyle(
                         fontSize: normalFontsize,
                         color: Colors.white,

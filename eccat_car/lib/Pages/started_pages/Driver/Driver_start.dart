@@ -1,10 +1,11 @@
+import 'package:eccat_car/Info/AIinfo.dart';
+import 'package:eccat_car/Info/Healthinfo.dart';
+import 'package:eccat_car/Info/IOTinfo.dart';
+import 'package:external_app_launcher/external_app_launcher.dart';
 import 'package:flutter/material.dart';
+
 import '../../../core/colors.dart';
 import '../../../core/space.dart';
-import 'package:eccat_car/Info/AIinfo.dart';
-import 'package:eccat_car/Info/IOTinfo.dart';
-import 'package:eccat_car/Info/Healthinfo.dart';
-import 'package:external_app_launcher/external_app_launcher.dart';
 
 class DriverStartPage extends StatefulWidget {
   const DriverStartPage({super.key});
@@ -20,6 +21,7 @@ class _DriverStartPageState extends State<DriverStartPage> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final isLargeScreen = screenWidth > 480;
     if (screenWidth > 480) {
       // If width is more than 480, set a new font value
       fontSize = 30;
@@ -60,16 +62,16 @@ class _DriverStartPageState extends State<DriverStartPage> {
                 width: double.infinity,
               ),
 
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 10,
                   vertical: 12,
                 ),
                 child: Text(
-                  'specifications',
+                  'Specifications Info',
                   style: TextStyle(
                       color: redhomeColor,
-                      fontSize: 30,
+                      fontSize: isLargeScreen ? 36 : 28,
                       fontWeight: FontWeight.w900),
                 ),
               ),
@@ -115,11 +117,11 @@ class _DriverStartPageState extends State<DriverStartPage> {
                               const SpaceVH(height: 10.0),
                               Expanded(
                                   child: Container(
-                                child: const Text(
+                                child: Text(
                                   'Location',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 25,
+                                      fontSize: isLargeScreen ? 30 : 22,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ))
@@ -166,11 +168,11 @@ class _DriverStartPageState extends State<DriverStartPage> {
                               Expanded(
                                   child: Container(
                                 //margin: EdgeInsets.only(top: 20),
-                                child: const Text(
+                                child: Text(
                                   'IOT',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 25,
+                                      fontSize: isLargeScreen ? 30 : 22,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ))
@@ -226,11 +228,11 @@ class _DriverStartPageState extends State<DriverStartPage> {
                               const SpaceVH(height: 10.0),
                               Expanded(
                                   child: Container(
-                                child: const Text(
+                                child: Text(
                                   'AI',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 25,
+                                      fontSize: isLargeScreen ? 30 : 22,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ))
@@ -249,8 +251,7 @@ class _DriverStartPageState extends State<DriverStartPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (builder) =>
-                                      const HealthInfo()));
+                                  builder: (builder) => const HealthInfo()));
                         },
                         child: Container(
                           height: screenWidth > 480
@@ -278,11 +279,11 @@ class _DriverStartPageState extends State<DriverStartPage> {
                               Expanded(
                                   child: Container(
                                 //margin: EdgeInsets.only(top: 20),
-                                child: const Text(
+                                child: Text(
                                   'HealthCare',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 25,
+                                      fontSize: isLargeScreen ? 30 : 22,
                                       fontWeight: FontWeight.bold),
                                 ),
                               )),

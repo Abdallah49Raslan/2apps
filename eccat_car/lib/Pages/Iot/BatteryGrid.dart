@@ -1,7 +1,7 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:awesome_notifications/awesome_notifications.dart';
 
 Widget BatteryGrid() {
   var refdb = FirebaseDatabase.instance.ref();
@@ -12,7 +12,7 @@ Widget BatteryGrid() {
       Container(
         margin: EdgeInsets.only(bottom: 20),
         child: Text(
-          'battery',
+          'Battery',
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
         ),

@@ -18,6 +18,7 @@ class _CustomerStartPageState extends State<CustomerStartPage> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final isLargeScreen = screenWidth > 480;
     if (screenWidth > 480) {
       // If width is more than 480, set a new font value
       fontSize = 30;
@@ -58,16 +59,16 @@ class _CustomerStartPageState extends State<CustomerStartPage> {
                 width: double.infinity,
               ),
 
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 10,
                   vertical: 12,
                 ),
                 child: Text(
-                  'specifications',
+                  'Specifications Info',
                   style: TextStyle(
                       color: redhomeColor,
-                      fontSize: 30,
+                      fontSize: isLargeScreen ? 36 : 28,
                       fontWeight: FontWeight.w900),
                 ),
               ),
@@ -113,11 +114,11 @@ class _CustomerStartPageState extends State<CustomerStartPage> {
                               const SpaceVH(height: 10.0),
                               Expanded(
                                   child: Container(
-                                child: const Text(
+                                child:  Text(
                                   'Location',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 25,
+                                      fontSize: isLargeScreen ? 30 : 22,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ))
@@ -164,11 +165,11 @@ class _CustomerStartPageState extends State<CustomerStartPage> {
                               Expanded(
                                   child: Container(
                                 //margin: EdgeInsets.only(top: 20),
-                                child: const Text(
-                                  'Health',
+                                child:  Text(
+                                  'Health Care',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 25,
+                                      fontSize: isLargeScreen ? 30 : 22,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ))

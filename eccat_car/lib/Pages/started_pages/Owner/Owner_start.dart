@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:eccat_car/Info/Healthinfo.dart';
+import 'package:eccat_car/Info/IOTinfo.dart';
+import 'package:eccat_car/Info/Securityinfo.dart';
 import 'package:external_app_launcher/external_app_launcher.dart';
+import 'package:flutter/material.dart';
+
 import '../../../core/colors.dart';
 import '../../../core/space.dart';
-import 'package:eccat_car/Info/IOTinfo.dart';
-import 'package:eccat_car/Info/Healthinfo.dart';
-import 'package:eccat_car/Info/Securityinfo.dart';
 
 class OwnerStartPage extends StatefulWidget {
   const OwnerStartPage({super.key});
@@ -20,6 +21,7 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final isLargeScreen = screenWidth > 480;
     if (screenWidth > 480) {
       // If width is more than 480, set a new font value
       fontSize = 30;
@@ -66,10 +68,10 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                   vertical: 12,
                 ),
                 child: Text(
-                  'specifications',
+                  'Specifications Info',
                   style: TextStyle(
                       color: redhomeColor,
-                      fontSize: screenWidth > 480 ? 34 : 30,
+                      fontSize: isLargeScreen ? 36 : 28,
                       fontWeight: FontWeight.w900),
                 ),
               ),
@@ -119,7 +121,7 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                                   'Location',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: screenWidth > 480 ? 25 : 22,
+                                      fontSize: isLargeScreen ? 30 : 22,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ))
@@ -170,7 +172,7 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                                   'IoT',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: screenWidth > 480 ? 25 : 22,
+                                      fontSize: isLargeScreen ? 30 : 22,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ))
@@ -230,7 +232,7 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                                   'Security',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: screenWidth > 480 ? 25 : 22,
+                                      fontSize: isLargeScreen ? 30 : 22,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ))
@@ -249,8 +251,7 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (builder) =>
-                                      const HealthInfo()));
+                                  builder: (builder) => const HealthInfo()));
                         },
                         child: Container(
                           height: screenWidth > 480
@@ -282,7 +283,7 @@ class _OwnerStartPageState extends State<OwnerStartPage> {
                                     'Healthcare',
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: screenWidth > 480 ? 25 : 22,
+                                        fontSize: isLargeScreen ? 30 : 22,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),

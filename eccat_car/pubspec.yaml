@@ -69,6 +69,9 @@ dependencies:
   webview_flutter: ^4.2.0
   webview_flutter_web: ^0.2.2+1
   curved_navigation_bar: ^1.0.3
+  mailer: ^6.0.1
+  flutter_email_sender: ^5.2.0
+  
 
 
 

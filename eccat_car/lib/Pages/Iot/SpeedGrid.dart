@@ -15,7 +15,7 @@ Widget SpeedGrid() {
           top: 40,
         ),
         child: Text(
-          'SPeed',
+          'Speed',
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30),
         ),

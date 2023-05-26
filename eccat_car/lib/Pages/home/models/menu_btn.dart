@@ -31,7 +31,7 @@ class MenuBtn extends StatelessWidget {
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                color: white,
+                color: Colors.black12,
                 offset: Offset(0, 3),
                 blurRadius: 8,
               )
