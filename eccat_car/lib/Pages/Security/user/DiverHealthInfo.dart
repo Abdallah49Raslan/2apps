@@ -251,6 +251,5 @@ class _DriverinfoState extends State<Driverinfo> {
         );
       }),
     );
-    ;
   }
 }

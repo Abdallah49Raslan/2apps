@@ -42,7 +42,7 @@ class _SearchPageState extends State<AboutAPP> {
                           ),
                           applicationLegalese: 'legalese',
                           applicationVersion: 'version 1.0.0',
-                          applicationName: 'Golf Car',
+                          applicationName: 'ECCAT Car',
                           children: [
                             Text(
                               'This App created by Team Mobile App at ECCAT',

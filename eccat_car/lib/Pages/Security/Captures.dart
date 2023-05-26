@@ -57,7 +57,6 @@ class _CapturesState extends State<Captures> {
         ),
       ),
       body: FutureBuilder(
-        future: Future.delayed(Duration(seconds: 5)), // Wait for 5 seconds
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
