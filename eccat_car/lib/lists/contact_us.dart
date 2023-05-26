@@ -8,7 +8,16 @@ class ContactUsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: blackBG,
       appBar: AppBar(
-        title: Text('Contact Us'),
+        centerTitle: true,
+        backgroundColor: backgroundColorDark,
+        title: const Text(
+          "Contact Us",
+          style: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: whiteText,
+          ),
+        ),
       ),
       body: Center(
         child: Column(
@@ -41,22 +50,6 @@ class ContactUsPage extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-              ),
-              padding: EdgeInsets.all(10),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.blue, // Customize button color if needed
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                child: Text(
-                  'Visit Facebook Page',
-                  style: headline1,
-                ),
-                onPressed: () {
-                  // Open Facebook page link here
-                },
               ),
             ),
           ],
