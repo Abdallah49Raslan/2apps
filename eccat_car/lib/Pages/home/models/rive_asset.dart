@@ -1,8 +1,8 @@
-import 'package:eccat_car/Pages/AI/person_page.dart';
+import 'package:eccat_car/Pages/AI/WebPage.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import '../../../lists/chat.dart';
-import '../../AI/search_page.dart';
+import '../../AI/AboutApp.dart';
 
 class RiveAsset {
   final String artboard, stateMachineName, title, src;
